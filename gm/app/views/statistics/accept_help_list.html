@@ -1,0 +1,22 @@
+<div style="width: 100%;height: 100%;position: relative; z-index: 0">
+  <div style="width: 100%;height: 100%;position: absolute;overflow-y: auto">
+    <table class="table table-hover table-bordered">
+      <thead style="z-index: 0">
+      <tr>
+        <td>接受帮助用户id</td>
+        <td>接受帮助时间</td>
+        <td>接受帮助总金额</td>
+        <td>接受帮助剩余金额</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="accept_help in accept_help_list">
+        <td>{{accept_help.accept_uid}}</td>
+        <td>{{accept_help.accept_stime*1000|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td>{{accept_help.accept_money}}</td>
+        <td>{{accept_help.accept_lmoney}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

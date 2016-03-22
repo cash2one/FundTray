@@ -1,0 +1,35 @@
+.lock{
+  position: relative;
+  border:1px solid #dddddd;
+  height: 40px;
+  width: 340px;
+  color: #9c9c9c;
+}
+
+.lock.ready{
+  color: #ffffff;
+}
+.lock.ready .lock-header{
+  background-image: url(../images/yes.png);
+}
+.lock-body{
+  position: absolute;
+  height: 100%;
+  background-color: #7ac23c;
+  width: 0;
+}
+.lock-header{
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  background: #ffffff url(../images/rt.png) center no-repeat;
+  cursor: pointer;
+}
+.lock-text{
+  position:absolute;
+  height: 100%;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  background: transparent;
+}

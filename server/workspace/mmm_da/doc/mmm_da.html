@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
+<title>mmm_da</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="mmm-da">
+<h1 class="title">mmm_da</h1>
+
+<p>版本: 0.0.1</p>
+<div class="section" id="id1">
+<h1>1.简介</h1>
+<p>mmm_da 管理mmm后台逻辑+db访问</p>
+</div>
+<div class="section" id="id2">
+<h1>2.接口介绍</h1>
+<div class="section" id="id3">
+<h2>2.1 注册:</h2>
+<blockquote>
+<p>HTTPS post /register:</p>
+<blockquote>
+<dl class="docutils">
+<dt>body(ujson){</dt>
+<dd><p class="first">id: 账号id, 需要使用通过2.20new_account_id获取一个新账号id</p>
+<p>account:账号</p>
+<p>passwd: 密码</p>
+<p>id_card: 身份证号码</p>
+<p>email: 邮箱</p>
+<p>phone: 手机号码</p>
+<p>leader_id: 领导人id, 必须是真实存在的id， 需要使用通过2.20random_leader_id获取一个新账号id</p>
+<p>bank: 开户银行</p>
+<p>bank_address: 开户支行</p>
+<p>bank_account: 开户账号</p>
+<p>bank_name: 开户名称</p>
+<p>wechat: 微信，  可选</p>
+<p class="last">alipay: 支付宝， 可选</p>
+</dd>
+</dl>
+<p>}</p>
+</blockquote>
+<dl class="docutils">
+<dt>Response:</dt>
+<dd>'result':请见错误码说明</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id4">
+<h2>2.2 登陆:</h2>
+<blockquote>
+<p>HTTPS post /login:</p>
+<blockquote>
+<dl class="docutils">
+<dt>body(ujson){</dt>
+<dd><p class="first">id:账号id</p>
+<p class="last">passwd: 密码</p>
+</dd>
+</dl>
+<p>}</p>
+</blockquote>
+<dl class="docutils">
+<dt>Response:</dt>
+<dd><p class="first">'result':请见错误码说明,</p>
+<p>'account_info': 详见4数据模板 ACCOUNT_INFO</p>
+<p class="last">'access_token': 访问token</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id5">
+<h2>2.3 账号修改:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS post /account/&lt;id&gt;:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+<p>passwd: 密码</p>
+<p>...</p>
+</blockquote>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd>'result':请见错误码说明,</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id6">
+<h2>2.4获取他人账号信息:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS get /account/&lt;view_id&gt;:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd><p class="first">'result':请见错误码说明,</p>
+<p class="last">'account_info': 详见4数据模板 ACCOUNT_INFO</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id7">
+<h2>2.5 密码修改:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS post /passwd_change:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+<p>old_passwd: 老密码</p>
+<p>new_passwd: 新密码</p>
+</blockquote>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd>'result':请见错误码说明,</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id8">
+<h2>2.6 激活账号:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS get /active/&lt;active_id&gt;:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd>'result':请见错误码说明,</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id9">
+<h2>2.8 我的团队概要信息:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS get/post /summary:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd><p class="first">'result':请见错误码说明,</p>
+<p>'summary': [{u'unactived': 第一层未激活数量, u'actived': 第一层激活数量, u'sum': 第一层总数量},</p>
+<blockquote class="last">
+<p>{u'unactived': 第二层未激活数量, u'actived': 第二层激活数量, u'sum': 第二层总数量},</p>
+<p>,</p>
+<p>,</p>
+<p>{u'unactived': 第N层未激活数量, u'actived': 第N层激活数量, u'sum': 第N层总数量}]</p>
+</blockquote>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id10">
+<h2>2.9 申请帮助:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS post /apply_help:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+apply_money: 提供金额</blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>Response:</p>
+</blockquote>
+</div>
+<div class="section" id="id11">
+<h2>2.9.1 删除申请帮助:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS post /del_apply_help:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+apply_order:申请帮助订单</blockquote>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd>'result':请见错误码说明</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id12">
+<h2>2.10 获取当前申请帮助(申请状态为未确认的):</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS post /cur_apply_help:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd><p class="first">'result':请见错误码说明,</p>
+<p>'apply_help_ls': [{accept_order:接受帮助订单, accept_uid:接受帮助玩家id, accept_account:接受帮助玩家账号, bank_name:接受帮助玩家银行卡名称</p>
+<blockquote>
+<p>apply_order:申请帮助订单, apply_sorder:申请帮助子订单, apply_time:申请时间, apply_money:申请金额, apply_stat:申请状态}</p>
+<p>,,,</p>
+<p>]</p>
+</blockquote>
+<p class="last">'apply_help': {apply_order:申请帮助订单, apply_time:申请时间, apply_money:申请金额, apply_stat:申请状态]</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id13">
+<h2>2.11 申请帮助支付信息上传(前端):</h2>
+<blockquote>
+<p>及时支付给申请帮助的人加息，加息幅度可配置</p>
+<dl class="docutils">
+<dt>HTTP post <a class="reference external" href="http://52.77.234.86/apply_help_pay">http://52.77.234.86/apply_help_pay</a>:</dt>
+<dd><dl class="first docutils">
+<dt>body(){</dt>
+<dd><p class="first">id: 用户id</p>
+<p>access_token = access_token</p>
+<p>apply_sorder:申请帮助子订单id</p>
+<p>pay_msg: 支付留言</p>
+<p class="last">file: 选择文件</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd><p class="first">'result':请见错误码说明</p>
+<p class="last">'apply_help': {apply_sorder:申请帮助子订单, apply_stat:申请状态}</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="nginx">
+<h2>2.12 申请帮助支付信息转存(nginx)</h2>
+<blockquote>
+<p>注意：前端不需要开发，这个接口是nginx调用的</p>
+<dl class="docutils">
+<dt>HTTP post /apply_help_paid:</dt>
+<dd><dl class="first docutils">
+<dt>body(){</dt>
+<dd><p class="first">id: 用户id</p>
+<p>access_token = access_token</p>
+<p>apply_sorder:申请帮助子订单id</p>
+<p>pay_msg: 支付留言</p>
+<p>file_content_type: 文件类型,如'image/jpeg',</p>
+<p>file_md5: 文件md5,'fafa5efeaf3cbe3b23b2748d13e629a1',</p>
+<p>submit: 'Upload',</p>
+<p>file_name: 文件名称,如'Tulips.jpg',</p>
+<p>file_path: 文件存储路径,'/tmp/nginx_upload/0000000001',</p>
+<p class="last">file_size: 文件大小,'620888',</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd><p class="first">'result':请见错误码说明</p>
+<p class="last">'apply_help': {apply_sorder:申请帮助子订单, apply_stat:申请状态}</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id14">
+<h2>2.13 申请帮助拒绝:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS post /apply_help_refuse:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+apply_sorder:申请帮助子订单</blockquote>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd>'result':请见错误码说明</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id15">
+<h2>2.15 接受帮助:</h2>
+<blockquote>
+<p>申请帮助4-7天后才能开始接收帮助</p>
+<p>类似于提现帮助本息,接收帮助后，本息一次性算完，到此为止，不在提供利息</p>
+<p>接受帮助需要在24小时内匹配完成</p>
+<dl class="docutils">
+<dt>HTTPS post /accept_help:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+'mafuluo': 需要提取的马夫罗，整形</blockquote>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd>'result':请见错误码说明,</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id16">
+<h2>2.15.1 删除接受帮助:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS post /del_accept_help:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+'accept_order': 接受帮助订单ID</blockquote>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd>'result':请见错误码说明</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id17">
+<h2>2.16 获取当前接受帮助:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS post /cur_accept_help:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd><p class="first">'result':请见错误码说明,</p>
+<p>'apply_help_ls': [{apply_order:申请帮助订单ID, apply_sorder:申请帮助子订单, apply_uid:申请帮助玩家id, bank_name:申请帮助玩家银行卡名称, apply_money:申请金额,  apply_stat:申请状态, apply_piture:支付截图, apply_message:支付留言},,,]</p>
+<p>'accept_help': {accept_order:接受帮助订单ID, accept_stime:接受帮助开始日期, accept_money:接受帮助金额, accept_lmoney:接受帮助剩余金额, accept_stat:接受帮助状态}</p>
+<p class="last"># 注意：如果是匹配状态下， accept_help只有以下字段： {accept_order:接受帮助订单ID, accept_stime:接受帮助开始日期, accept_money:接受帮助金额,  accept_stat:接受帮助状态}</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id18">
+<h2>2.17 接受帮助确认:</h2>
+<blockquote>
+<p>及时确认给申请帮助的人加息，加息幅度可配置</p>
+<dl class="docutils">
+<dt>HTTPS post /accept_help_confirm:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+apply_sorder:申请帮助子订单,</blockquote>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd><p class="first">'result':请见错误码说明,</p>
+<p class="last">'apply_help': {apply_sorder:申请帮助子订单, apply_stat:申请状态}</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id19">
+<h2>2.17.1 接受帮助未收到:</h2>
+<blockquote>
+<p>申请帮助支付之后，接受帮助者确认没有收到，这时候处理订单异常状态，系统不处理，等待客服处理</p>
+<dl class="docutils">
+<dt>HTTPS post /accept_help_notreceived:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+apply_sorder:申请帮助子订单,</blockquote>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd>'result':请见错误码说明,</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id">
+<h2>2.20 分配账号id:</h2>
+<blockquote>
+<p>HTTPS get /new_account_id:</p>
+<dl class="docutils">
+<dt>Response:</dt>
+<dd><p class="first">'result':请见错误码说明,</p>
+<p class="last">'new_account_id': 新账号id</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id20">
+<h2>2.20.1 检测账号id是否存在:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS get /check_id:</dt>
+<dd>id: 账号id</dd>
+</dl>
+<p>Response:</p>
+</blockquote>
+</div>
+<div class="section" id="id21">
+<h2>2.21 随机分配领导id:</h2>
+<blockquote>
+<p>HTTPS get /random_leader_id:</p>
+<dl class="docutils">
+<dt>Response:</dt>
+<dd><p class="first">'result':请见错误码说明,</p>
+<p class="last">'leader_id': 领导id</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id22">
+<h2>2.22 系统信息:</h2>
+<blockquote>
+<p>HTTPS get /system_info:</p>
+<dl class="docutils">
+<dt>Response:</dt>
+<dd><p class="first">'apply_req_count': 提供援助人数</p>
+<p>'accept_req_count': 等待援助人数</p>
+<p class="last">'notice': 系统公告</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id23">
+<h2>2.24 获取奖金日志：</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS post /get_bonus_logs:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+page_idx: 页数索引,没有的话默认为1</blockquote>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd><p class="first">'result':请见错误码说明,</p>
+<p class="last">'bonus_logs': [{afctd_uid:被奖励的uid, afct_uid:奖励的uid, afct_bonus:奖金, afct_time:奖励时间, afct_type:奖金类型}]</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id24">
+<h2>2.25 检测手机号码是否存在:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS get /check_phone:</dt>
+<dd>phone: 手机号码</dd>
+</dl>
+<p>Response:</p>
+</blockquote>
+</div>
+<div class="section" id="id25">
+<h2>2.26 激活币转账:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS post /active_coin_transfer:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+<p>tgt_id: 目标用户id,</p>
+<p>tgt_coin: 转账激活币个数</p>
+</blockquote>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd>'result':请见错误码说明,</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="id26">
+<h2>2.27 排单币转账:</h2>
+<blockquote>
+<dl class="docutils">
+<dt>HTTPS post /match_coin_transfer:</dt>
+<dd><dl class="first docutils">
+<dt>headers{</dt>
+<dd><p class="first">'Authorization': access_token</p>
+<p class="last">'id' = id</p>
+</dd>
+</dl>
+<p>}</p>
+<p>body(ujson){</p>
+<blockquote>
+<p>tgt_id: 目标用户id,</p>
+<p>tgt_coin: 转账排单币个数</p>
+</blockquote>
+<p class="last">}</p>
+</dd>
+<dt>Response:</dt>
+<dd>'result':请见错误码说明,</dd>
+</dl>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id27">
+<h1>3. 错误码说明</h1>
+<p>ERROR_SUCCESS = 0                           # 操作成功</p>
+<p>ERROR_UNKNOWN_ERROR = 1                     # 未知错误</p>
+<p>ERROR_PARAMS_ERROR = 2                      # 参数格式错误</p>
+<p>ERROR_DB_ERROR = 3                          # 数据库操作错误</p>
+<p>ERROR_ACCESS_TOKEN_ERROR = 4                # AccessToken错误</p>
+<p>ERROR_VERIFY_CODE_ERROR = 5                 # 验证码错误</p>
+<p>ERROR_SIGN_ERROR = 6                        # 参数签名出错</p>
+<p>ERROR_PARAM = 440                           # 参数格式错误</p>
+<p>ERROR_UID_NOT_EXIST = 441                   # uid不存在</p>
+<p>EEROR_ACCEPT_BALANCE = 442                                      # 接受帮助资金平衡，请改天再来申请</p>
+<p>EEROR_MATCH_COIN_LACK = 443                                     # 排单币不足</p>
+<p>ERROR_MAX_APPLY_HELP_LESS = 444             # 每次投资额不得低于上次投资额</p>
+<p>ERROR_PHONE_EXISTED = 445                   # 手机号码已经存在</p>
+<p>ERROR_PHONE_INVALID = 446                   # 手机号码无效</p>
+<p>ERROR_ACCOUNT_SEALED = 447                  # 账号已经被封号，请联系管理员</p>
+<p>ERROR_ACCOUNT_UNACTIVED = 448               # 账号未激活，请联系管理员</p>
+</div>
+<div class="section" id="id28">
+<h1>4.数据模板</h1>
+<p>ACCOUNT_INFO = {id:账号id, account:账号, passwd: 密码, id_card: 身份证号码, email: 邮箱, phone: 手机号码, leader_id: 领导人id,</p>
+<blockquote>
+<p>bank: 开户银行, bank_address: 开户支行, bank_account: 开户账号, bank_name: 开户名称, wechat: 微信, alipay: 支付宝,</p>
+<p>create_time: 创建时间, active_coin:激活币, active_time:激活时间, stat:账号状态:0未激活,1激活,2封号,</p>
+<p>level:等级, mafuluo:钱包余额, team_count:团队人数,</p>
+<p>match_coin:排单币, max_apply_money:最大申请帮助金额,以后每次申请只能比此次更大金额}</p>
+</blockquote>
+<p>SERVER_INFO =  {apply_match_min_days： 申请帮助至少匹配时间(天),</p>
+<blockquote>
+<p>apply_match_max_days: 申请帮助最多匹配时间(天),</p>
+<p>apply_pay_max_days:     申请帮助至少匹配时间(天),</p>
+<p>accept_match_min_days: 接受帮助至少匹配时间(天),</p>
+<p>apply_interest:申请帮助利息(百分比)</p>
+<p>pay_timely_rwd_hours:及时打款奖励区间(小时),</p>
+<p>pay_timely_rwd_int:及时打款利息奖励(百分比),</p>
+<p>cfmd_timely_rwd_hours:及时打款奖励区间(小时),</p>
+<p>cfmd_timely_rwd_int:及时收款确认利息奖励(百分比)</p>
+<p>day_seconds:一天的秒数}</p>
+</blockquote>
+<p># 申请帮助状态</p>
+<p>APPLY_STAT =[</p>
+<blockquote>
+<blockquote>
+<p>APYRS_REQUEST,        # 提供帮助请求提交(对于客户端来说，也是处理匹配状态)</p>
+<p>APYRS_MATCHING,       # 提供帮助请求匹配</p>
+<p>APYRS_FINISH,         # 提供帮助请求完成</p>
+<p>APYS_WAITING_PAY,     # 等待支付</p>
+</blockquote>
+<p>APYS_PAID,            # 已经支付</p>
+<p>APYS_CFRM_PAID,       # 确认支付</p>
+<p>APYS_UNUSUAL,         # 订单异常,联系客服处理</p>
+<p>APYS_CANCEL,          # 取消</p>
+</blockquote>
+<p>] = [10,11,12, 0,1,2,3,4]</p>
+<p># 接受帮助状态</p>
+<p>ACCEPT_STAT=[</p>
+<blockquote>
+<p>ACPRS_REQUEST,        # 接收帮助请求提交(对于客户端来说，也是处理匹配状态)</p>
+<p>ACPRS_FINISH,         # 接收帮助请求完成</p>
+<p>ACPS_MATCHING,        # 匹配中</p>
+<p>ACPS_FINISH,          # 完成</p>
+</blockquote>
+<p>] = [10,11,  0,1]</p>
+<p># 账号状态</p>
+<p>STAT =[</p>
+<blockquote>
+<p>UNACTIVED,  # 未激活</p>
+<p>ACTIVED,    # 激活</p>
+<p>SEALED      # 封号</p>
+</blockquote>
+<p>] = xrange(0, 3)</p>
+<p># 等级级别</p>
+<p>LEVEL = [</p>
+<blockquote>
+<p>NOT_LEVEL,      # 无职位</p>
+<p>MGR,            # 经理</p>
+<p>VICE_GEN_MGR,   # 副总经理</p>
+<p>GEN_MGR,        # 总经理</p>
+</blockquote>
+<p>] = xrange(0, 4)</p>
+<p># BONUS 奖励类型</p>
+<p>BONUS_REWARD_TYPE =[</p>
+<blockquote>
+LAYER_APPLY_PAID_REWARD,        # 下线人员提供帮助奖励</blockquote>
+<p>] = xrange(10, 11)</p>
+<p># BONUS 惩罚类型</p>
+<p>BONUS_PUNISH_TYPE =[</p>
+<blockquote>
+LAYER_APPLY_UNPAID_PUNISH,      # 下线人员未支付提供帮助惩罚</blockquote>
+<p>] = xrange(20, 21)</p>
+</div>
+</div>
+</body>
+</html>

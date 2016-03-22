@@ -1,0 +1,18 @@
+<div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      申请细则
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">1.申请金额必须是1000的整数倍</li>
+      <li class="list-group-item">2.申请金额的区间为1000元至20000元</li>
+      <li class="list-group-item">3.本次申请金额不得低于上次申请金额,当前最低申请额度为<span class="text-danger" ng-bind="minPlay"></span>元</li>
+      <li class="list-group-item">4.申请需要消耗排单币，请联系管理员获取帮助</li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label for="apply_money">申请金额</label>
+    <input id="apply_money" type="text" class="form-control" ng-model="payload.apply_money">
+  </div>
+  <button class="btn btn-default" ng-click="apply_help(payload)" ng-disabled="payload.apply_money%1000!=0||payload.apply_money>20000||payload.apply_money<minPlay">提交</button>
+</div>

@@ -1,0 +1,78 @@
+<div id="register" class="register-page vertical-center">
+    <div class="register-header">注册</div>
+    <div class="register-body">
+        <div class="register-main">
+            <form novalidate name="register">
+                <div class="register-group">
+                    <label for="bank" class="register-label">
+                        <span class="register-star">*</span>
+                        开户银行
+                    </label>
+                    <div class="register-cell">
+                        <input  id="bank" type="text" class="register-input" name="bank" ng-model="payload.bank" required>
+                        <span class="register-remark"></span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="bank_address" class="register-label">
+                        <span class="register-star">*</span>
+                        开户支行
+                    </label>
+                    <div class="register-cell">
+                        <input  id="bank_address" type="text" class="register-input" name="bank_address" ng-model="payload.bank_address" required>
+                        <span class="register-remark"></span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="bank_account" class="register-label">
+                        <span class="register-star">*</span>
+                        开户账号
+                    </label>
+                    <div class="register-cell">
+                        <input  id="bank_account" type="text" class="register-input" name="bank_account" ng-model="payload.bank_account" required>
+                        <span class="register-remark"></span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="bank_name" class="register-label">
+                        <span class="register-star">*</span>
+                        开户名称
+                    </label>
+                    <div class="register-cell">
+                        <input  id="bank_name" type="text" class="register-input" name="bank_name" ng-model="payload.bank_name" required>
+                        <span class="register-remark"></span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="wechat" class="register-label">
+                        <span class="register-star"></span>
+                        微信
+                    </label>
+                    <div class="register-cell">
+                        <input  id="wechat" type="text" class="register-input" name="wechat" ng-model="payload.wechat">
+                        <span class="register-remark small">（可选）</span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="alipay" class="register-label">
+                        <span class="register-star"></span>
+                        支付宝
+                    </label>
+                    <div class="register-cell">
+                        <input  id="alipay" type="text" class="register-input" name="alipay" ng-model="payload.alipay">
+                        <span class="register-remark small">（可选）</span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label  class="register-label" for="check">&nbsp;</label>
+                    <div class="register-cell">
+                        <input id='check'  type="checkbox" name="check" ng-model="payload.check" ng-init="payload.check=true" required>
+                        <label class="small">我完全意识风险，同意参与投资</label>
+                        <br>
+                        <button class="btn btn-primary" type="button" ng-click="submit()" ng-disabled="register.$invalid">立即注册</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="message">
+  <div class="message-title">提示</div>
+  <div class="message-body">
+    <p>请选择你想要的车型</p>
+    <div id="options">
+      <label><div class="bonus"><input type="radio" ng-model="car"  value="baoma" name="car"><i class="baoma"></i><br>宝马</div></label>
+      <label><div class="bonus"><input type="radio" ng-model="car"  value="beiqi" name="car"><i class="beiqi"></i><br>北汽</div></label>
+      <label><div class="bonus"><input type="radio" ng-model="car"  value="benchi" name="car"><i class="benchi"></i><br>奔驰</div></label>
+      <label><div class="bonus"><input type="radio" ng-model="car"  value="changchen" name="car"><i class="changchen"></i><br>长城</div></label>
+      <label><div class="bonus"><input type="radio" ng-model="car"  value="dazhong" name="car"><i class="dazhong"></i><br>大众</div></label>
+      <label><div class="bonus"><input type="radio" ng-model="car"  value="qirui" name="car"><i class="qirui"></i><br>奇瑞</div></label>
+    </div>
+  </div>
+  <button class="btn btn-block btn-primary btn-sm" ng-click="yes()" ng-disabled="!car">确定</button>
+  <!--<button class="btn btn-block btn-default btn-sm" ng-click="no()">取消</button>-->
+</div>

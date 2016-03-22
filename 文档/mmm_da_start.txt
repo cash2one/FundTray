@@ -1,0 +1,3 @@
+调试启动参数
+E:/FundTray/server/workspace/mmm_da/start.py --apply_req second_1 --match second_11 --apply_pay second_21 --accept_req second_31 --day_seconds 1 --force_mtype system --enable_active False --enable_seal False --enable_pay_check False
+

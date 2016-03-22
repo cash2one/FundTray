@@ -1,0 +1,94 @@
+<div id="register" class="register-page vertical-center">
+    <div class="register-header">注册</div>
+    <div class="register-body">
+        <div class="register-main">
+            <form novalidate name="register">
+                <div class="register-group">
+                    <label for="id" class="register-label">
+                        <span class="register-star">*</span>
+                        注册账户
+                    </label>
+                    <div class="register-cell">
+                        <input id="id" type="number" name="id" class="register-input" ng-model="payload.id" id-no-existed placeholder="仅能输入有效的数字">
+                        <span class="register-remark small"><i></i></span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="password" class="register-label">
+                        <span class="register-star">*</span>
+                        登录密码
+                    </label>
+                    <div class="register-cell">
+                        <input id="password" type="password" class="register-input" name="password" ng-model="payload.passwd" required>
+                        <span class="register-remark"></span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="password2" class="register-label">
+                        <span class="register-star">*</span>
+                        确认密码
+                    </label>
+                    <div class="register-cell">
+                        <input id="password2" type="password" class="register-input" name="password2" equal-to="payload.passwd" ng-model="payload.passwd2" required>
+                        <span class="register-remark">
+                            <span ng-messages="register.password2.$error">
+                                <span class="text-danger" ng-message="equality">前后密码不一致</span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="phone" class="register-label">
+                        <span class="register-star">*</span>
+                        手机号码
+                    </label>
+                    <div class="register-cell">
+                        <input  id="phone" type="text" class="register-input" name="phone" check-phone ng-pattern="/^1[0-9]{10}$/" ng-model-options="{ updateOn: 'blur' }" ng-model="payload.phone" required>
+                        <span class="register-remark">
+                            <span ng-messages="register.phone.$error">
+                                <span class="text-danger" ng-message="pattern">手机格式不正确</span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="id_card" class="register-label">
+                        <span class="register-star">*</span>
+                        身 份 证
+                    </label>
+                    <div class="register-cell">
+                        <input  id="id_card" type="text" class="register-input" name="id_card" ng-model="payload.id_card" required>
+                        <span class="register-remark"></span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="email" class="register-label">
+                        <span class="register-star">*</span>
+                        电子邮件
+                    </label>
+                    <div class="register-cell">
+                        <input  id="email" type="text" class="register-input" name="email" ng-model="payload.email" required>
+                        <span class="register-remark"></span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="leader_id" class="register-label">
+                        <span class="register-star">*</span>
+                        推荐人ID
+                    </label>
+                    <div class="register-cell">
+                        <input  id="leader_id" type="text" class="register-input" ng-disabled="payload.out_leader_id" name="leader_id" ng-model="payload.leader_id" ng-model-options="{ updateOn: 'blur' }" id-existed placeholder="有效的用户ID" required>
+                        <span class="register-remark"></span>
+                        <!--<button ng-hide="payload.out_leader_id" ng-click="change_leader_id()">系统随机</button>-->
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label  class="register-label">&nbsp;</label>
+                    <div class="register-cell">
+                        <button class="btn btn-primary" type="button" ng-click="next()" ng-disabled="register.$invalid">下一步</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

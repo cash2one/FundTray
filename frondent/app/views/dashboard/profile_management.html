@@ -1,0 +1,31 @@
+<form novalidate>
+  <div class="form-group">
+    <label for="id">会员账户</label>
+    <input id="id" type="text" class="form-control input-sm" disabled ng-model="auth.id">
+  </div>
+  <div class="form-group">
+    <label for="leader_id">领导账户</label>
+    <input id="leader_id" type="text" class="form-control input-sm" disabled ng-model="auth.leader_id">
+  </div>
+  <div class="form-group">
+    <label for="email">邮箱</label>
+    <p>绑定信息为:<span ng-bind="auth.email"></span></p>
+    <input id="email" ng-model="payload.email" class="form-control input-sm">
+  </div>
+  <div class="form-group">
+    <label for="phone">手机号码</label>
+    <p>绑定信息为:<span ng-bind="auth.phone"></span></p>
+    <input id="phone" ng-model="payload.phone" class="form-control input-sm">
+  </div>
+  <div class="form-group">
+    <label for="wechat">微信</label>
+    <p>绑定信息为:<span ng-bind="auth.wechat"></span></p>
+    <input id="wechat" ng-model="payload.wechat" class="form-control input-sm">
+  </div>
+  <div class="form-group">
+    <label for="alipay">支付宝</label>
+    <p>绑定信息为:<span ng-bind="auth.alipay"></span></p>
+    <input id="alipay" ng-model="payload.alipay" class="form-control input-sm">
+  </div>
+  <button class="btn btn-primary btn-sm" ng-click="account(payload)">提交</button>
+</form>

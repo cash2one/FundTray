@@ -1,0 +1,23 @@
+<form novalidate>
+  <div class="form-group">
+    <label for="bank">开户银行</label>
+    <p>绑定信息为:<span ng-bind="auth.bank"></span></p>
+    <input id="bank" ng-model="payload.bank" class="form-control input-sm">
+  </div>
+  <div class="form-group">
+    <label for="bank_address">开户支行</label>
+    <p>绑定信息为:<span ng-bind="auth.bank_address"></span></p>
+    <input id="bank_address" ng-model="payload.bank_address" class="form-control input-sm">
+  </div>
+  <div class="form-group">
+    <label for="bank_account">开户账户</label>
+    <p>绑定信息为:<span ng-bind="auth.bank_account"></span></p>
+    <input id="bank_account" ng-model="payload.bank_account" class="form-control input-sm">
+  </div>
+  <div class="form-group">
+    <label for="bank_name">开户名称</label>
+    <p>绑定信息为:<span ng-bind="auth.bank_name"></span></p>
+    <input id="bank_name" ng-model="payload.bank_name" class="form-control input-sm">
+  </div>
+  <button class="btn btn-primary btn-sm" ng-click="account(payload)">提交</button>
+</form>

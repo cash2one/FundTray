@@ -1,0 +1,22 @@
+<div style="width: 100%;height: 100%;position: relative; z-index: 0">
+  <div style="width: 100%;height: 100%;position: absolute;overflow-y: auto">
+    <table class="table table-hover table-bordered">
+      <thead style="z-index: 0">
+      <tr>
+        <td>申请帮助用户id</td>
+        <td>申请帮助时间</td>
+        <td>申请帮助总金额</td>
+        <td>申请帮助剩余金额</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="apply_help in apply_help_list">
+        <td>{{apply_help.apply_uid}}</td>
+        <td>{{apply_help.apply_stime*1000|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td>{{apply_help.apply_money}}</td>
+        <td>{{apply_help.apply_lmoney}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

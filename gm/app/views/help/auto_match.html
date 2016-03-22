@@ -1,0 +1,13 @@
+<div>
+  <form name="form" novalidate>
+    <div class="form-group">
+      <label for="apply_help_uid">请输入申请帮助账号ID</label>
+      <input id="apply_help_uid" type="text" class="form-control" ng-model="to_am_apply_help_uid" required>
+      <label for="accept_help_uid">请输入接收帮助账号ID</label>
+      <input id="accept_help_uid" type="text" class="form-control" ng-model="to_am_accept_help_uid" required>
+      <label for="apply_money">请输入申请帮助金额:<span class="small">申请金额必须是1000的整数倍</span> </label>
+      <input id="apply_money" type="text" class="form-control" ng-model="to_am_apply_money" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block"  ng-disabled="form.$invalid||to_am_apply_money%1000!=0" ng-click="auto_match()">提交</button>
+  </form>
+</div>

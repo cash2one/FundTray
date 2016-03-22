@@ -1,0 +1,22 @@
+<div id="login">
+    <div class="main vertical-center">
+      <form name="form" novalidate>
+        <div class="form-group">
+          <label for="username">GM账户</label>
+          <input id="username" type="text" class="form-control" ng-model="person.id" required>
+        </div>
+        <div class="form-group">
+          <label for="password">密码</label>
+          <input id="password" type="password" class="form-control" ng-model="person.passwd" required>
+        </div>
+        <div class="form-group">
+          <label for="code" style="display: block">验证码</label>
+          <!--<input type="checkbox" id="code" ng-model="person.code" required style="display: none">-->
+          <!--<lock target="person.code"></lock>-->
+          <input id="code" type="text" class="form-control" code-check ng-model="person.code" style="display: inline-block;width: 80%"><span style="position: absolute;vertical-align: bottom"><code-install></code-install></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" ng-disabled="form.$invalid" ng-click="login()">登录</button>
+      </form>
+    </div>
+</div>
+

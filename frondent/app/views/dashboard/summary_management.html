@@ -1,0 +1,18 @@
+<table class="table table-hover table-striped table-bordered">
+    <thead>
+    <tr>
+        <td>层级</td>
+        <td>未激活(人数)</td>
+        <td>激活(人数)</td>
+        <td>总和(人数)</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="summary in summarys">
+        <td>第{{$index+1}}级</td>
+        <td>{{summary.unactived}}</td>
+        <td>{{summary.actived}}</td>
+        <td>{{summary.sum}}</td>
+    </tr>
+    </tbody>
+</table>

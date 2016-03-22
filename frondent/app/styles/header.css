@@ -1,0 +1,56 @@
+.header{
+  margin-bottom: 20px;
+  background-color: #FFA500;
+}
+
+.header .brand{
+  /*line-height: 60px;*/
+}
+
+.header div{
+  display:inline-block;
+}
+
+.header ul{
+  display: inline-block;
+  float: right;
+  margin-bottom: 0; /*overwrite bootstrap margin-bottom 10px */
+  padding: 0;
+  list-style: none;
+}
+
+.header>ul>li{
+  position: relative;
+  display: inline-block;
+}
+
+.header ul li a{
+  white-space: nowrap;
+  display: inline-block;
+  text-decoration: none;
+  padding: 15px 20px;
+  color: #000000;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.header>ul>li:hover{
+  background-color: #cccccc;
+}
+
+.header ul>li:hover>ul{
+  display: block;
+  background-color: #F0FFFF;
+}
+
+.header>ul>li>ul{
+  display: none;
+  position: absolute;
+  top:100%;
+  z-index: 5;
+}
+ .header>ul>li>ul>li>a{
+   display: inline-block;
+ }
+ .header>ul>li:hover>ul>li:hover{
+   background-color: #4cae4c;
+ }

@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <!--<meta name="viewport" content="width=device-width">-->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <!-- endbower -->
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/list.css">
+    <link rel="stylesheet" href="styles/message.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="mmmApp">
+
+    <message-install></message-install>
+    <div id="ui-view" ui-view></div>
+
+    <span class="vertical-center" transition-icon><i class="fa fa-refresh fa-5x fa-spin" style="vertical-align: middle;"></i>&nbsp;&nbsp;&nbsp;数据加载中</span>
+
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <!-- endbower -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/gm_account.js"></script>
+    <script src="scripts/controllers/dashboard.js"></script>
+    <script src="scripts/services/statistics.js"></script>
+    <script src="scripts/services/server.js"></script>
+    <script src="scripts/config/url.js"></script>
+    <script src="scripts/services/auth.js"></script>
+    <script src="scripts/services/interceptor.js"></script>
+    <script src="scripts/directives/message_install.js"></script>
+    <script src="scripts/directives/code_install.js"></script>
+    <script src="scripts/utils/code_cache.js"></script>
+    <script src="scripts/directives/code_check.js"></script>
+    <script src="scripts/config/interceptor.js"></script>
+    <script src="scripts/config/access.js"></script>
+    <script src="scripts/config/role.js"></script>
+    <script src="scripts/directives/toggle_install.js"></script>
+    <script src="scripts/utils/message.js"></script>
+    <script src="scripts/directives/toggle_management.js"></script>
+    <script src="scripts/utils/modal.js"></script>
+    <script src="scripts/services/user_data.js"></script>
+    <script src="scripts/directives/transition-icon.js"></script>
+    <script src="scripts/controllers/statistics.js"></script>
+    <script src="scripts/controllers/account.js"></script>
+    <script src="scripts/controllers/help.js"></script>
+    <script src="scripts/controllers/server.js"></script>
+    <script src="scripts/services/account.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,20 @@
+<div class="install" ng-dblclick="yes()">
+  <div class="install-main">
+    <div class="help-detail">
+      <!--<div class="help-detail-item">订单号:{{item.apply_sorder}}</div>-->
+      <div class="help-detail-item">账户:{{item.accept_uid}}</div>
+      <div class="help-detail-item">匹配金额:{{item.apply_pmoney| currency:'&yen;'}}</div>
+      <div class="help-detail-item">开户银行:{{item.bank}}</div>
+      <div class="help-detail-item">开户支行:{{item.bank_address}}</div>
+      <div class="help-detail-item">开户账号:{{item.bank_account}}</div>
+      <div class="help-detail-item">开户名称:{{item.bank_name}}</div>
+      <div class="help-detail-item">支付宝:{{item.alipay}}</div>
+      <div class="help-detail-item">微信: {{item.wechat}}</div>
+      <div class="help-detail-item">邮箱:{{item.email}}</div>
+      <div class="help-detail-item">手机号:{{item.phone}}</div>
+    </div>
+    <div class="small text-center" style="margin: 5px"><button class="btn btn-default btn-sm" ng-click="yes()">退出</button></div>
+    <!--<button class="btn btn-default btn-sm" ng-click="yes()">确认</button>-->
+  </div>
+
+</div>

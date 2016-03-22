@@ -1,0 +1,80 @@
+<div>
+  <form novalidate>
+    <div class="form-group">
+      <label for="apply_match_min_days">申请帮助至少匹配时间，整形数字(天)</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.apply_match_min_days"></span></p>
+      <input id="apply_match_min_days" ng-model="AllServerSetting.apply_match_min_days" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="apply_match_max_days">申请帮助最多匹配时间，整形数字(天)</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.apply_match_max_days"></span></p>
+      <input id="apply_match_max_days" ng-model="AllServerSetting.apply_match_max_days" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="apply_pay_max_days">申请帮助最多支付时间，整形数字(天)</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.apply_pay_max_days"></span></p>
+      <input id="apply_pay_max_days" ng-model="AllServerSetting.apply_pay_max_days" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="accept_match_min_days">接受帮助至少匹配时间，整形数字(天)</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.accept_match_min_days"></span></p>
+      <input id="accept_match_min_days" ng-model="AllServerSetting.accept_match_min_days" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="apply_interest">申请帮助利息，整形数字(百分比))</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.accept_match_min_days"></span></p>
+      <input id="apply_interest" ng-model="AllServerSetting.apply_interest" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="pay_reward_dic">打款奖励{小时:奖励百分比}, 例如{"3":1,"5":0.76}</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.pay_reward_dic"></span></p>
+      <input id="pay_reward_dic" ng-model="AllServerSetting.pay_reward_dic" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="cfmd_reward_dic">打款确认奖励{小时:奖励百分比}, 例如{"4":1}</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.cfmd_reward_dic"></span></p>
+      <input id="cfmd_reward_dic" ng-model="AllServerSetting.cfmd_reward_dic" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="active_coin_loss">用户激活每次消耗数量，整形数字</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.active_coin_loss"></span></p>
+      <input id="active_coin_loss" ng-model="AllServerSetting.active_coin_loss" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="match_coin_loss">用户排单每次消耗数量，整形数字(百分比)</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.match_coin_loss"></span></p>
+      <input id="match_coin_loss" ng-model="AllServerSetting.match_coin_loss" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="apply_paid_reward">申请帮助完成奖励，整形数字(百分比)</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.apply_paid_reward"></span></p>
+      <input id="apply_paid_reward" ng-model="AllServerSetting.apply_paid_reward" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="apply_unpaid_punish">申请帮助未完成惩罚，整形数字(百分比)</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.apply_unpaid_punish"></span></p>
+      <input id="apply_unpaid_punish" ng-model="AllServerSetting.apply_unpaid_punish" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="system_balance">系统平衡净差额= 申请帮助总额-接受帮助总额, 整形数字</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.system_balance"></span></p>
+      <input id="system_balance" ng-model="AllServerSetting.system_balance" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="apply_factor">申请帮助人数因子</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.total_apply_factor"></span></p>
+      <input id="apply_factor" ng-model="AllServerSetting.total_apply_factor" class="form-control input-sm">
+    </div>
+    <div class="form-group">
+      <label for="accept_factor">接受帮助人数因子</label>
+      <p>当前值为:<span ng-bind="AllServerSetting.total_accept_factor"></span></p>
+      <input id="accept_factor" ng-model="AllServerSetting.total_accept_factor" class="form-control input-sm">
+    </div>
+    <button class="btn btn-primary btn-sm" ng-click="reset_server_setting(AllServerSetting)">提交</button>
+  </form>
+</div>
+
+
+
+
+

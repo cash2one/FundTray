@@ -1,0 +1,37 @@
+<div id="list" toggle-management>
+  <ul>
+    <li><span ng-click="force_reload()"><i class="fa fa-home"></i> 网站首页</span></li>
+    <li>
+      <span toggle-install> <i class="fa fa-book"></i> 新手教程</span>
+      <ul>
+        <li ui-sref="dashboard.apply_help_view"> <i class="fa fa-briefcase"></i> 排队教程</li>
+        <li ui-sref="dashboard.confirm_help_view"><i class="fa fa-briefcase"></i> 支付教程</li>
+        <li ui-sref="dashboard.accept_help_view"> <i class="fa fa-briefcase"></i> 取现教程</li>
+      </ul>
+    </li>
+    <li>
+      <span toggle-install><i class="fa fa-cog"></i> 用户中心</span>
+      <ul>
+        <li ui-sref="dashboard.account_active_management"> <i class="fa fa-user-plus"></i> 激活账户</li>
+        <li ui-sref="dashboard.password_management"> <i class="fa fa-key"></i> 修改密码</li>
+        <li ui-sref="dashboard.profile_management"> <i class="fa fa-pencil"></i> 个人信息</li>
+        <li ui-sref="dashboard.payment_management"> <i class="fa fa-credit-card"></i> 支付信息</li>
+      </ul>
+    </li>
+    <li>
+      <span toggle-install> <i class="fa fa-trademark"></i> 交易中心 </span>
+      <ul>
+        <li ui-sref="dashboard.match_transfer"><i class="fa fa-train"></i> 排单币转账</li>
+        <li ui-sref="dashboard.active_transfer"><i class="fa fa-truck"></i> 激活币转账 </li>
+        <li ng-click="announcement()" ><i class="fa fa-car"></i> 奖&nbsp;金&nbsp;购&nbsp;车 </li>
+      </ul>
+    </li>
+    <li>
+      <span toggle-install> <i class="fa fa-sitemap"></i> 信息中心 </span>
+      <ul>
+        <li ui-sref="dashboard.summary_management"><i class="fa fa-users"></i> 市场团队</li>
+        <li ui-sref="dashboard.bonus_logs"><i class="fa fa-envelope"></i> 奖金公告</li>
+      </ul>
+    </li>
+  </ul>
+</div>

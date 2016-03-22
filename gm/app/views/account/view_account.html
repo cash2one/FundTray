@@ -1,0 +1,9 @@
+<div>
+  <form name="form" novalidate>
+    <div class="form-group">
+      <label for="view_account">请输入您要查看的账号</label>
+      <input id="view_account" type="text" class="form-control" ng-model="to_view_account" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" ng-disabled="form.$invalid" ng-click="view_account()">提交</button>
+  </form>
+</div>

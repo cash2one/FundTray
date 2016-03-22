@@ -1,0 +1,21 @@
+.message{
+  width:40%;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  padding: 10px 30px;
+  background-color: #ffffff;
+  transform: translate(-50%,-50%);
+  border:1px solid #ADD8E6;
+  /*box-shadow: 0 0 5px 5px #eeeeee;*/
+  z-index: 1;
+}
+
+.message .message-title{
+  text-align: center;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 10px;
+}
+.message .message-body{
+  padding: 10px 0;
+}

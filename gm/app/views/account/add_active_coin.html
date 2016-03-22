@@ -1,0 +1,11 @@
+<div>
+  <form name="form" novalidate>
+    <div class="form-group">
+      <label for="add_account">请输入您要增加激活币的账号</label>
+      <input id="add_account" type="text" class="form-control" ng-model="to_add_active_account" required>
+      <label for="add_active_coin">请输入您要增加的激活币</label>
+      <input id="add_active_coin" type="text" class="form-control" ng-model="to_add_active_coin" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block"  ng-disabled="form.$invalid" ng-click="add_active_coin()">提交</button>
+  </form>
+</div>

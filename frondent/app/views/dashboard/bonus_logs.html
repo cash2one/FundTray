@@ -1,0 +1,26 @@
+<div style="width: 100%;height: 100%;position: relative; z-index: 0">
+  <div style="width: 100%;height: 100%;position: absolute;overflow-y: auto" scroll-update callback="getMorebonusLog()">
+    <table class="table table-hover table-bordered">
+      <thead style="z-index: 0">
+      <tr>
+        <td>类型</td>
+        <td>原因</td>
+        <td>时间</td>
+        <td>金额</td>
+        <td>账户</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-class="{danger: bonusLog.afct_type == 20 }" ng-repeat="bonusLog in bonusLogs">
+        <td>{{bonusLog.afct_type|afctType}}</td>
+        <td>{{bonusLog.afct_type|afctReason}}</td>
+        <td>{{bonusLog.afct_time*1000|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td>{{bonusLog.afct_bonus}}</td>
+        <td>{{bonusLog.afct_uid}}</td>
+      </tr>
+      </tbody>
+      <!--<button class="btn btn-block btn-default" ng-click="getMorebonusLog()">获取下一页</button>-->
+    </table>
+  </div>
+</div>
+

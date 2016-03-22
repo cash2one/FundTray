@@ -1,0 +1,9 @@
+<div>
+  <form name="form" novalidate>
+    <div class="form-group">
+      <label for="notice">请输入新的系统公告</label>
+      <input id="notice" type="text" class="form-control" ng-model="to_notice" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block"  ng-disabled="form.$invalid" ng-click="set_notice()">提交</button>
+  </form>
+</div>

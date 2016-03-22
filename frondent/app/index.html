@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <!--<meta name="viewport" content="width=device-width">-->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <!-- endbower -->
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/register.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/list.css">
+    <link rel="stylesheet" href="styles/funds.css">
+    <link rel="stylesheet" href="styles/modal.css">
+    <link rel="stylesheet" href="styles/message.css">
+    <link rel="stylesheet" href="styles/scroller.css">
+    <link rel="stylesheet" href="styles/lock.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="mmmApp">
+
+    <message-install></message-install>
+    <modal-install></modal-install>
+    <upload-install></upload-install>
+    <div id="ui-view" ui-view></div>
+
+    <span class="vertical-center" transition-icon><i class="fa fa-refresh fa-5x fa-spin" style="vertical-align: middle;"></i>&nbsp;&nbsp;&nbsp;数据加载中</span>
+
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <!-- endbower -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/directives/equal_to.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/dashboard.js"></script>
+        <script src="scripts/services/user_service.js"></script>
+        <script src="scripts/services/url.js"></script>
+        <script src="scripts/services/auth.js"></script>
+        <script src="scripts/services/interceptor.js"></script>
+        <script src="scripts/services/buffer.js"></script>
+        <script src="scripts/controllers/board.js"></script>
+        <script src="scripts/controllers/list.js"></script>
+        <script src="scripts/directives/code_install.js"></script>
+        <script src="scripts/services/code_cache.js"></script>
+        <script src="scripts/directives/code_check.js"></script>
+        <script src="scripts/controllers/user_management.js"></script>
+        <script src="scripts/config/interceptor.js"></script>
+        <script src="scripts/config/access.js"></script>
+        <script src="scripts/services/role.js"></script>
+        <script src="scripts/directives/toggle_install.js"></script>
+        <script src="scripts/directives/message_install.js"></script>
+        <script src="scripts/services/message.js"></script>
+        <script src="scripts/directives/toggle_management.js"></script>
+        <script src="scripts/services/fund_service.js"></script>
+        <script src="scripts/directives/active_install.js"></script>
+        <script src="scripts/controllers/fund_management.js"></script>
+        <script src="scripts/filters/apply_state.js"></script>
+        <script src="scripts/directives/modal_install.js"></script>
+        <script src="scripts/services/modal.js"></script>
+        <script src="scripts/directives/upload_install.js"></script>
+        <script src="scripts/services/upload.js"></script>
+        <script src="scripts/services/user_data.js"></script>
+        <script src="scripts/services/file_sender.js"></script>
+        <script src="scripts/services/fund_flow.js"></script>
+        <script src="scripts/controllers/accept_help.js"></script>
+        <script src="scripts/controllers/apply_help.js"></script>
+        <script src="scripts/directives/transition-icon.js"></script>
+        <script src="scripts/controllers/regbank.js"></script>
+        <script src="scripts/directives/marqueen_install.js"></script>
+        <script src="scripts/filters/job_level.js"></script>
+        <script src="scripts/filters/accept_state.js"></script>
+        <script src="scripts/services/notice.js"></script>
+        <script src="scripts/directives/lock.js"></script>
+        <script src="scripts/controllers/summary.js"></script>
+        <script src="scripts/services/lock_count.js"></script>
+        <script src="scripts/directives/id_no_existed.js"></script>
+        <script src="scripts/directives/id_existed.js"></script>
+        <script src="scripts/services/expire.js"></script>
+        <script src="scripts/filters/expire.js"></script>
+        <script src="scripts/controllers/bonus_log.js"></script>
+        <script src="scripts/filters/afct_type.js"></script>
+        <script src="scripts/filters/afct_reason.js"></script>
+        <script src="scripts/directives/check-phone.js"></script>
+        <script src="scripts/directives/scroll-update.js"></script>
+        <script src="scripts/controllers/transfer.js"></script>
+        <script src="scripts/services/bouns-service.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

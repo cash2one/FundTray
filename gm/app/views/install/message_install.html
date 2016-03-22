@@ -1,0 +1,8 @@
+<div class="message">
+  <div class="message-title">提示</div>
+  <div class="message-body">
+    <p ng-bind="content"></p>
+  </div>
+  <button class="btn btn-block btn-primary btn-sm" ng-show="level>=0" ng-click="yes()">确定</button>
+  <button class="btn btn-block btn-default btn-sm"  ng-show="level>=1" ng-click="no()">取消</button>
+</div>

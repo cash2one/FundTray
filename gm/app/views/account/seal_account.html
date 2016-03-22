@@ -1,0 +1,9 @@
+<div>
+  <form name="form" novalidate>
+    <div class="form-group">
+      <label for="seal_account">请输入您要封的账号</label>
+      <input id="seal_account" type="text" class="form-control" ng-model="to_seal_account" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block"  ng-disabled="form.$invalid" ng-click="seal_account()">提交</button>
+  </form>
+</div>

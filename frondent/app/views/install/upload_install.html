@@ -1,0 +1,15 @@
+<div class="install">
+  <div class="install-main" style="background-color: #FFE4B5;color: black">
+    <form novalidate name="upload">
+      <label for="message">留言<span class="small">(必填)</span></label>
+      <!--<textarea id="message" style="width: 100%;resize: none;" ng-model="data.pay_msg" required></textarea>-->
+      <textarea id="message" style="width: 100%;resize: none;" ng-model="data.pay_msg"></textarea>
+      <span>上传截图</span><span class="small text-danger"></span>
+      <input type="file" ng-model="data.file"><br>
+      <!--<p class="small text-danger">留言和截图缺一不可，否则无法提交</p>-->
+      <!--<button ng-click="yes()" type="button" ng-disabled="upload.$invalid||!data.file">提交</button>-->
+      <button ng-click="yes()" type="button">提交</button>
+      <button ng-click="no()" type="button">取消</button>
+    </form>
+  </div>
+</div>

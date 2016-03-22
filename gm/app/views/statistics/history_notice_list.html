@@ -1,0 +1,16 @@
+<div style="width: 100%;height: 100%;position: relative; z-index: 0">
+  <div style="width: 100%;height: 100%;position: absolute;overflow-y: auto">
+    <table class="table table-hover table-bordered">
+      <thead style="z-index: 0">
+      <tr>
+        <td>历史公告</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="history_notice in HistoryNotices track by $index">
+        <td>{{history_notice}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

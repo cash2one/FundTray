@@ -1,0 +1,20 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    交易须知
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">1.转账数量不能超过账户排单币数量</li>
+    <li class="list-group-item">2.当前账户内排单币的数量为 <span ng-bind="match_coin"></span> </li>
+    <li class="list-group-item">3.请确认目标账户正确,交易一旦发起立即生效!</li>
+  </ul>
+</div>
+<form name="matchDeal" novalidate>
+  <label>目标账户</label>
+  <input type="text" name="tgt_id" class="form-control input-sm" ng-model="payload.tgt_id" required>
+  <label>转账数量</label>
+  <input type="number" name="tgt_coin" class="form-control input-sm" ng-model="payload.tgt_coin" required>
+  <button class="btn btn-primary btn-sm"
+          ng-click="macth_coin_transfer(payload)"
+          ng-disabled="matchDeal.$invalid||payload.tgt_coin>match_coin||payload.tgt_coin<=0">提交
+  </button>
+</form>

@@ -1,0 +1,42 @@
+<nav>
+  <div class="header custom-container">
+    <div style="padding: 15px 20px">五星国际互助平台</div>
+    <ul>
+      <li ng-click="force_reload()">
+        <a>网站首页</a>
+      </li>
+      <li>
+        <a>新手教程</a>
+        <ul>
+          <li ui-sref="dashboard.apply_help_view"><a>排队教程</a></li>
+          <li ui-sref="dashboard.confirm_help_view"><a>支付教程</a></li>
+          <li ui-sref="dashboard.accept_help_view"><a>取现教程</a></li>
+        </ul>
+      </li>
+      <li>
+        <a>用户中心</a>
+        <ul>
+          <li ui-sref="dashboard.account_active_management"><a>激活账户</a></li>
+          <li ui-sref="dashboard.password_management"><a>修改密码</a></li>
+          <li ui-sref="dashboard.profile_management"><a>个人信息</a></li>
+          <li ui-sref="dashboard.payment_management"><a>支付信息</a></li>
+        </ul>
+      </li>
+      <li>
+        <a>交易中心</a>
+        <ul>
+          <li ui-sref="dashboard.match_transfer"><a>排单币转账</a></li>
+          <li ui-sref="dashboard.active_transfer"><a>激活币转账</a></li>
+          <li ng-click="announcement()"><a>奖金购车</a></li>
+        </ul>
+      </li>
+      <li>
+        <a>信息中心</a>
+        <ul>
+          <li ui-sref="dashboard.summary_management"><a>市场团队</a></li>
+          <li ui-sref="dashboard.bonus_logs"><a>奖金公告</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

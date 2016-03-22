@@ -1,0 +1,66 @@
+.message{
+  width:40%;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  padding: 10px 30px;
+  background-color: #ffffff;
+  transform: translate(-50%,-50%);
+  border:1px solid #ADD8E6;
+  /*box-shadow: 0 0 5px 5px #eeeeee;*/
+  z-index: 1;
+}
+
+.message .message-title{
+  text-align: center;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 10px;
+}
+.message .message-body{
+  padding: 10px 0;
+}
+
+div#options label{
+  position: relative;
+  padding-left: 20px;
+}
+div#options label div.bonus{
+  display: inline-block;
+  text-align: center;
+}
+div#options input[type=radio]{
+  position: absolute;
+  left: -99999px;
+}
+div#options input[type=radio]+i{
+  display: inline-block;
+  width: 78px;
+  height:78px;
+  margin: 5px;
+  border:1px solid #9cd9e8 ;
+  background-size: contain;
+  /*background:url('car-image/baoma.jpg') center;*/
+  /*border-radius: 50% ;*/
+}
+div#options input[type=radio]+i.baoma{
+  background:url('../images/car/baoma.jpg') center;
+}
+div#options input[type=radio]+i.beiqi{
+  background:url('../images/car/beiqi.jpg') center;
+}
+div#options input[type=radio]+i.benchi{
+  background:url('../images/car/benchi.jpg') center;
+}
+div#options input[type=radio]+i.changchen{
+  background:url('../images/car/changchen.jpg') center;
+}
+div#options input[type=radio]+i.dazhong{
+  background:url('../images/car/dazhong.jpg') center;
+}
+div#options input[type=radio]+i.qirui{
+  background:url('../images/car/qirui.jpg') center;
+}
+div#options input[type=radio]:checked+i{
+  margin: 4px;
+  border:2px solid #0c1057;
+}

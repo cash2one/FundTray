@@ -1,0 +1,17 @@
+<div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      申请细则
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">1.申请金额必须是100的整数倍</li>
+      <li class="list-group-item">2.申请金额必须小等于钱包余额</li>
+      <li class="list-group-item">3.当前钱包余额为<span class="text-danger" ng-bind="account_info.mafuluo"></span>元</li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label for="accept_money">申请金额</label>
+    <input id="accept_money" type="number" class="form-control" ng-model="payload.accept_money">
+  </div>
+  <button class="btn btn-default" ng-disabled="!payload.accept_money||payload.accept_money>account_info.mafuluo||payload.accept_money%100!==0" ng-click="accept_help(payload.accept_money)">提交</button>
+</div>

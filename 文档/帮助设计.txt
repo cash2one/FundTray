@@ -1,0 +1,48 @@
+
+
+
+
+申请帮助（M）：
+apply_help
+	提供帮助同时只能进行一次，结束再进行下一次
+	前4天，是系统申请帮助。之后是第二批的投资者申请
+	没人申请帮助的是，使用系统默认账号申请
+	
+	帮助id 开始值1000000
+	
+	帮助id      帮助玩家id    	申请帮助id		帮助金额		帮助开始时间		帮助支付时间		帮助利息			帮助状态:0未支付, 1支付完成，2未确认,3确认,4取消
+	apply_id	apply_uid		accept_id		apply_money		apply_start_time	apply_pay_time		aaly_interest		stat
+
+
+帮助关系表（M对N）：
+help_relations
+	
+	id	帮助id		接收id			订单id
+	id	apply_id	accept_id		order_id
+	
+	
+接受帮助（N）:
+accept_help
+	确认后3-7天后方可使用来申请帮助
+	0-4小时内支付奖励利息
+    接受id 		接受玩家id		申请接受时间 	 接受金额			剩余接受金额	
+	accept_id 	accept_uid  	accept_time 	 accept_money	left_accept_money 
+	
+
+
+
+
+	
+及时打款和确认都是给打款方加息1%， 可配置
+
+
+
+拒绝打款，封号
+
+日息3%， 可配置
+
+
+申请帮助，系统3-7天排队（匹配）， 排到单；打款全部完成（1天内打款，不打款封号），申请结束
+接受帮助：申请帮助随时可点，以点的时间点，2天后匹配一个单子；
+
+   

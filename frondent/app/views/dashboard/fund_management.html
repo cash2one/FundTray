@@ -1,0 +1,147 @@
+<div style="width: 100%"><marqueen-install></marqueen-install></div>
+<div class="well pull-left help-btn help-btn-apply" ng-click="access_to_apply()">
+  <div>
+    <!--<i class="fa fa-money fa-5x"></i><br/>-->
+    <!--<p>申请帮助</p>-->
+  </div>
+</div>
+<div class="well pull-left help-btn help-btn-accept" ng-click="access_to_accept()">
+  <div>
+    <!--<i class="fa fa-stop-circle-o fa-5x"></i><br/>-->
+    <!--<p>接受帮助</p>-->
+  </div>
+</div>
+<div style="clear: both"></div>
+<div class="system">
+  <span class="system-info"><i class="fa fa-graduation-cap"></i><br>当前职位<br>{{person.level|jobLevel}}</span>
+  <span class="system-info"><i class="fa fa-users"></i><br>团队人数<br>{{person.team_count}}</span>
+  <span class="system-info"><i class="fa fa-shopping-bag"></i><br>钱包余额<br> {{person.mafuluo}}</span>
+  <span class="system-info"><i class="fa fa-shopping-bag"></i><br>排单币<br> {{person.match_coin}}</span>
+  <span class="system-info"><i class="fa fa-shopping-bag"></i><br>激活币<br> {{person.active_coin}}</span>
+  <span class="system-info"><i class="fa fa-user"></i><br>提供帮助人数<br>{{system_info.apply_req_count}}</span>
+  <span class="system-info"><i class="fa fa-user-md"></i><br>接受帮助人数<br>{{system_info.accept_req_count}}</span>
+</div>
+<br>
+<div class="table-title">
+  <span class="table-title-left"></span>提供帮助<span class="table-title-right"></span>
+</div>
+
+<div ng-if="apply_help_ls.length == 0 && !apply_help.apply_order" class="no-item-comment">当前没有申请列表</div>
+<h5 ng-if="apply_help.apply_order">主订单状态</h5>
+<table class="table table-bordered table-striped" ng-if="apply_help.apply_order">
+  <thead>
+  <tr style="background-color: #8B3A3A;color: white">
+    <td><span>管理</span></td>
+    <td><span>订单号</span></td>
+    <td><span>申请时间</span></td>
+    <td><span>总金额</span></td>
+    <td><span>剩余金额</span></td>
+    <td><span>状态</span></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <!--<button class="btn btn-default btn-sm" ng-click="del_apply(apply_help)" ng-show="apply_help.apply_stat==10||apply_help.apply_stat==11">删除</button>-->
+    </td>
+    <td><span>{{apply_help.apply_order}}</span></td>
+    <td><span>{{apply_help.apply_stime*1000|date:'yyyy-MM-dd HH:mm:ss'}}</span></td>
+    <td><span>{{apply_help.apply_money|currency:'&yen;'}}</span></td>
+    <td><span>{{apply_help.apply_lmoney|currency:'&yen;'}}</span></td>
+    <td><span>{{apply_help.apply_stat|apply_state}}</span></td>
+  </tr>
+  </tbody>
+</table>
+<h5 ng-if="apply_help_ls.length >0">子订单列表</h5>
+<table class="table table-bordered table-striped table-hover" ng-if="apply_help_ls.length >0">
+  <thead>
+  <tr>
+    <td><span>管理</span></td>
+    <td><span>订单号</span></td>
+    <td><span>账户</span></td>
+    <td><span>匹配金额</span></td>
+    <td><span>状态</span></td>
+    <td><span>剩余时间</span></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-class="{danger:apply_help.apply_pstat==3}"  ng-repeat="apply_help in apply_help_ls">
+    <td>
+      <button class="btn btn-default btn-sm" ng-click="detail(apply_help)" ng-show="apply_help.apply_pstat<=4">详情</button>
+      <button class="btn btn-primary btn-sm" ng-click="finish(apply_help)" ng-hide="apply_help.apply_pstat>=1">支付</button>
+      <button class="btn btn-danger btn-sm" ng-click="reject(apply_help)" ng-hide="apply_help.apply_pstat>=1">拒绝</button>
+    </td>
+    <td><span>{{apply_help.apply_sorder}}</span></td>
+    <td><span>{{apply_help.accept_uid}}</span></td>
+    <td><span>{{apply_help.apply_pmoney|currency:'&yen;'}}</span></td>
+    <td><span>{{apply_help.apply_pstat|apply_pay_state}}</span></td>
+    <td><span ng-show="apply_help.apply_pstat==0">{{apply_help.expire_time|expire}}</span></td>
+  </tr>
+  </tbody>
+</table>
+<br>
+<div class="table-title">
+  <span class="table-title-left"></span>接受帮助<span class="table-title-right"></span>
+</div>
+<div ng-if="accept_help_ls.length == 0 && !accept_help.accept_order" class="no-item-comment">当前没有提供列表</div>
+<h5 ng-if="accept_help.accept_order">主订单状态</h5>
+<table class="table table-hover table-bordered" ng-if="accept_help.accept_order">
+  <thead>
+  <tr style="background-color: #8B3A3A;color: white">
+    <td><span>管理</span></td>
+    <td><span>订单号</span></td>
+    <td><span>申请日期</span></td>
+    <td><span>总金额</span></td>
+    <td><span>剩余金额</span></td>
+    <td><span>状态</span></td>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="position: relative">
+        <!--<button class="btn btn-default btn-sm" ng-show="accept_help.accept_stat==10" ng-click="del_accept(accept_help)">删除</button>-->
+      </td>
+      <td>{{accept_help.accept_order}}</td>
+      <td>{{accept_help.accept_stime*1000|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+      <td>{{accept_help.accept_money|currency:'&yen;'}}</td>
+      <td>{{accept_help.accept_lmoney|currency:'&yen;'}}</td>
+      <td>{{accept_help.accept_stat|accept_state}}</td>
+    </tr>
+  </tbody>
+</table>
+<h5 ng-if="accept_help_ls.length > 0">子订单列表</h5>
+<table class="table table-bordered table-striped table-hover" style="vertical-align: middle"  ng-if="accept_help_ls.length > 0">
+  <thead>
+    <tr>
+      <td><span>管理</span></td>
+      <td><span>订单号</span></td>
+      <td><span>账户</span></td>
+      <td><span>银行账户</span></td>
+      <td><span>匹配金额</span></td>
+      <td><span>状态</span></td>
+      <td><span>剩余时间</span></td>
+      <td><span>截图链接</span></td>
+      <td><span>留言</span></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-class="{danger:accept_help.apply_pstat==3}" ng-repeat="accept_help in accept_help_ls">
+      <td>
+       <button class="btn btn-warning btn-sm" ng-show="accept_help.apply_pstat==1" ng-click="confirm(accept_help)">确认支付</button>
+       <button class="btn btn-danger btn-sm" ng-show="accept_help.apply_pstat==1" ng-click="notreceived(accept_help)">支付异常</button>
+      </td>
+      <td><span>{{accept_help.apply_sorder}}</span></td>
+      <td><span>{{accept_help.apply_uid}}</span></td>
+      <td><span>{{accept_help.bank_name}}</span></td>
+      <td><span> {{accept_help.apply_pmoney|currency:'&yen;'}}</span></td>
+      <td><span>{{accept_help.apply_pstat|apply_pay_state}}</span></td>
+      <td><span ng-show="accept_help.apply_pstat==0">{{accept_help.expire_time|expire}}</span></td>
+      <td><span ng-show="accept_help.apply_pstat>=1&&accept_help.apply_piture!==''"><a ng-href={{accept_help.apply_piture}} target="_blank">点击这里</a></span></td>
+      <td>
+        <span ng-show="accept_help.apply_message">
+          <button class="btn btn-sm btn-primary" ng-show="accept_help.apply_pstat>=1" ng-click="view_message(accept_help.apply_message)">查看</button>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,47 @@
+#list{
+  /* 因为a标签会触发pointer所以干脆直接全体加上pointer*/
+  cursor: pointer;
+  background-color: #ffffff;
+  /*color:white;*/
+}
+
+#list ul{
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+#list a{
+  text-decoration: none;
+  color: #000000;
+}
+
+#list>ul ul{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s linear;
+  /* options: height opacity transform transform-origin visibility*/
+}
+
+#list>ul>li>span{
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+  background-color: #008B8B;
+  color:white;
+  /*background-color: #696969;*/
+}
+
+#list>ul>li>span.active+ul{
+  max-height: 200px;
+}
+
+#list>ul>li>ul>li{
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e8e0;
+}
+
+#list>ul>li>ul>li:hover{
+  background-color: #90EE90;
+}
