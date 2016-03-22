@@ -10,7 +10,6 @@ from utils.route import route
 from service_mgr.logic.web import require_login
 from utils.wapper.web import web_adaptor, ajax_recv_wapper
 from service_mgr.lib.service.service_main import ServiceMgr
-from service_mgr.db.db_oper import DBServiceInst
 from utils import logger
 import traceback
 
@@ -87,7 +86,6 @@ class SaveServiceData(HttpRpcHandler):
         new_all_data_ls = new_grp_data_ls + old_not_grp_data_ls
 
         try:
-            DBServiceInst.update_diff(ServiceMgr().db_pick(old_grp_data_ls), ServiceMgr().db_pick(new_grp_data_ls))
             ServiceMgr().init(new_all_data_ls)
         except:
             logger.warn("SaveServiceData::post error!!!, data_ls:%s traceback:%s" % (new_grp_data_ls, traceback.format_exc()))

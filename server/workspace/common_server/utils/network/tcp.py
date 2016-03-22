@@ -15,6 +15,9 @@ from utils.wapper.stackless import gevent_adaptor
 from utils import logger
 from utils.service_control.setting import PT_TCP
 from utils.network import PING_RESPONSE
+from utils.wapper.tcp import tcp_recv_adaptor
+from utils.wapper.crypto import sm_sign_checker
+from utils.service_control.parser import ArgumentParser
 
 
 class TcpRpcHandler(RPCServer):
@@ -24,6 +27,31 @@ class TcpRpcHandler(RPCServer):
     def ping(self):
         return PING_RESPONSE
 
+    @gevent_adaptor()
+    @tcp_recv_adaptor()
+    @sm_sign_checker()
+    def clear_cache(self):
+        """
+        清除缓存
+        :return:
+        """
+        logger.info("RpcHandler::clear_cache!!!")
+
+    @gevent_adaptor()
+    @tcp_recv_adaptor()
+    @sm_sign_checker()
+    def get_db_params(self):
+        """
+        获取db参数
+        :return:
+        """
+        logger.info("RpcHandler::get_db_params!!!")
+        args = ArgumentParser().get_argparser()
+        return {"db_host": args.db_host,
+                "db_port": args.db_port,
+                "db_user": args.db_user,
+                "db_password": args.db_password,
+                "db_table": args.db_table}
 
 class TcpRpcServer(object):
     """

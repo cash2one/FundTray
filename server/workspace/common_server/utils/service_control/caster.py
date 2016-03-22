@@ -12,6 +12,7 @@ from utils import logger
 import sys
 import ujson
 from cacher import ParamCacher
+from utils.service_control.finder import get_cur_ip
 
 BEAT_INTERVAL = 4
 TIMEOUT = 15
@@ -35,10 +36,11 @@ class HeartBeatClient(UdpClient):
 
 
 class ServiceAdvertiser(HeartBeatClient):
-    def __init__(self, service_id, service_version, port,  servie_mgr_ip=None, servie_mgr_port=None, default_load=1, load_getter=None):
-        self.service_id = service_id
-        self.service_version = service_version
+    def __init__(self, service_group, port, jid, service_version,  servie_mgr_ip=None, servie_mgr_port=None, default_load=1, load_getter=None):
+        self.service_group = service_group
         self.port = port
+        self.jid = jid
+        self.service_version = service_version
         self.default_load = default_load
         self.current_load = default_load
         self.load_getter = load_getter
@@ -64,10 +66,11 @@ class ServiceAdvertiser(HeartBeatClient):
             self.update_load(self.load_getter() or self.default_load)
 
         running = self.running
-        return ujson.dumps([self.service_id,
-                            self.process_name,
-                            self.service_version,
+        return ujson.dumps([self.service_group,
+                            get_cur_ip(),
                             self.port,
+                            self.jid,
+                            self.service_version,
                             self.current_load,
                             running])
 

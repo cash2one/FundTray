@@ -20,6 +20,7 @@ class UdpServer(TcpRpcServer):
         self.server = DatagramServer(('', self.port), handle=self.handle)
         self.protocol = PT_UDP
 
+    @gevent_adaptor()
     def handle(self, data, address):
         self.server.sendto(data, address)
 

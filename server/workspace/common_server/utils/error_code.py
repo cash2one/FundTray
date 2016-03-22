@@ -19,6 +19,7 @@ ERROR_VERIFY_CODE_ERROR = 5                 # 验证码错误
 ERROR_SIGN_ERROR = 6                        # 参数签名出错
 
 ERROR_SERVICE_START_ERROR = 7               # 服务器启动错误
+ERROR_SERVICE_STOP_ERROR = 8                # 服务器关闭错误
 
 """
 LOGIC ERROR CODE

@@ -17,7 +17,4 @@ class DBSchemaTable(SchemaTable):
         super(DBSchemaTable, self).__init__(ParamCacher().db_instance, ArgumentParser().args.db_name, table_name)
 
 
-DBGrantMachineInst = DBSchemaTable.instance("grant_machine")
 DBTpServiceInst = DBSchemaTable.instance("tp_service")
-DBServiceGroupInst = DBSchemaTable.instance("service_group")
-DBServiceInst = DBSchemaTable.instance("service")

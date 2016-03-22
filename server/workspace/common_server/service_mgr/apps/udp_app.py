@@ -6,20 +6,26 @@ Created on 2015-6-3
 @author: Jay
 """
 from utils.network.udp import UdpServer
+from utils.wapper.stackless import gevent_adaptor
 import ujson
-from service_mgr.lib.service.service_main import ServiceMgr
-from utils import logger
+from service_mgr.lib.service.service_main import ServiceMgr, Service
+from service_mgr.lib.service_group import ServiceGrpMgr
 
 
 class HeartbeatApp(UdpServer):
     def __init__(self, port):
         super(HeartbeatApp, self).__init__(port)
 
+    @gevent_adaptor()
     def handle(self, data, address):
-        service_id, process_name,service_version, port, current_load, running = ujson.loads(data)
-        service_obj = ServiceMgr().get_service_by_id(int(service_id))
-        if not service_obj:
-            logger.warn("HeartbeatApp:handle invalid service_id:%s" % service_id)
-            return
+        service_group, ip, port, jid, service_version, current_load, stat = ujson.loads(data)
 
-        service_obj.heart_beat(process_name,service_version, port, int(current_load), bool(running))
+        ServiceGrpMgr().add_grp_id(service_group)
+
+        service_id = Service.make_id(service_group, ip, port)
+        service_obj = ServiceMgr().get_service_by_id(service_id)
+        if not service_obj:
+            service_obj = Service(service_group, ip, port, jid)
+            ServiceMgr().add_service(service_obj)
+
+        service_obj.heart_beat(service_version, current_load, stat)

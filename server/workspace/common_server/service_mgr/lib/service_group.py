@@ -11,6 +11,14 @@ from utils.meta.singleton import Singleton
 from utils import logger
 from utils.interfaces.common import IManager
 
+class ServiceGrp:
+    def __init__(self, id):
+        self._id = id
+
+    @property
+    def id(self):
+        return self._id
+
 
 class ServiceGrpMgr(IManager):
     __metaclass__ = Singleton
@@ -20,11 +28,12 @@ class ServiceGrpMgr(IManager):
         self.type_to_dic = {}
         self.init_data_ls = None
 
-    def init(self, data_ls):
-        self.init_data_ls = data_ls
-        self.id_to_dic = {}
-        for dic in data_ls:
-            self.id_to_dic[dic['id']] = dic
+    def add_grp(self, grp_obj):
+        self.id_to_dic[grp_obj.id] = grp_obj
+
+    def add_grp_id(self, grp_id):
+        if not self.get_service_grp(grp_id):
+            self.add_grp(ServiceGrp(grp_id))
 
     def get_init_data_ls(self):
         return self.init_data_ls
@@ -58,18 +67,3 @@ class ServiceGrpMgr(IManager):
 
     def get_service_grps(self):
         return self.id_to_dic.keys()
-
-    def get_visible(self, viewer):
-        """
-        根据查看者获取可查看的服务组列表
-        :param viewer:
-        :return:
-        """
-        visibles = []
-
-        for sgid, sginfo in self.id_to_dic.items():
-            invisible = sginfo.get("invisible", [])
-            if invisible is None or viewer not in invisible:
-                visibles.append(sgid)
-
-        return visibles

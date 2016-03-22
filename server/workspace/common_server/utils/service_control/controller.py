@@ -14,11 +14,9 @@ from utils.scheduler import Jobs
 from checker import PortChecker
 from cacher import ParamCacher
 from utils import logger
-from utils.interfaces.service_mgr.tcp_rpc import stop_service
 import gevent
-from utils import error_code
-from parser import SMParamParser, ArgumentParser, parser_boolean
-from finder import get_random_port, IpFinder
+from parser import ArgumentParser, parser_boolean
+from finder import IpFinder, get_random_port
 import traceback
 import sys
 
@@ -48,7 +46,9 @@ class MainService(object):
         arg_parser = ArgumentParser()
         p = arg_parser.get_argparser()
 
-        self.add_cmd_opts(p)
+        p.add_argument('--is_https', default=False, type=parser_boolean,  help="Is use http ssl connection")
+        p.add_argument('--http_port', default=0, type=int,  help="The port of the http app listen")
+        p.add_argument('--tcp_port', default=0, type=int,  help="The port of of the tcp rpc app listen")
 
         p.add_argument('--service_type', default=service_type, type=str, help="The type of the service")
         p.add_argument('--service_version', default=use_redis, type=str,  help="The version of the service")
@@ -60,14 +60,11 @@ class MainService(object):
 
         p.add_argument('--logger_mask', default='0000', type=str, help="The logger mask em es fm fs")
 
+        self.add_cmd_opts(p)
+
         IpFinder().is_extranet = arg_parser.args.is_extranet
 
         if not self.is_sm:
-            SMParamParser(service_type=self.service_type,
-                          sm_rpc=ParamCacher().sm_rpc,
-                          arg_parser=p,
-                          rdm_port_fun=get_random_port)
-
             self.add_cmd_opts_after_sm(p)
 
         if self.db_update_dir_path:
@@ -80,8 +77,18 @@ class MainService(object):
         args = arg_parser.args
         arg_parser.will_change = False
 
+        self.prepare(args)
         self.init(args)
         logger.set_logger_level(args.logger_level)
+
+    def prepare(self, args):
+        """
+        参数准备
+        :param args: 参数变量
+        :return:
+        """
+        args.http_port = get_random_port() if args.http_port == 0 else args.http_port
+        args.tcp_port = get_random_port() if args.tcp_port == 0 else args.tcp_port
 
     def init(self, args):
         """
@@ -140,7 +147,9 @@ class MainService(object):
             Jobs().add_interval_job(UPDATE_INTERVAL, self.update)
 
             if not self.is_sm:
-                self.adv = ServiceAdvertiser(args.service_id, self.service_version, args.port)
+                port = {"tcp": args.tcp_port}
+                port.update({"https": args.http_port} if args.is_https else {"http": args.http_port})
+                self.adv = ServiceAdvertiser(self.service_type, port, args.jid if "jid" in args else "", self.service_version)
                 self.adv.advertise()
 
             check_ports = {}
@@ -176,10 +185,6 @@ class MainService(object):
 
         if not self.is_sm:
             self.adv.notify_shutdown()
-
-            result = stop_service(ParamCacher().sm_rpc,
-                                  ArgumentParser().args.service_id)
-            assert result['result'] == error_code.ERROR_SUCCESS
         [thread.stop() for thread in self.thread_ls]
 
     def _db_update(self):

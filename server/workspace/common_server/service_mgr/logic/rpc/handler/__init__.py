@@ -8,85 +8,18 @@ Created on 2015-4-27
 from utils.network.tcp import TcpRpcHandler
 from utils.wapper.stackless import gevent_adaptor
 from utils.wapper.tcp import tcp_recv_adaptor, tcp_send_adaptor
-from utils import error_code
-from service_mgr.lib.service.service_main import ServiceMgr, SS_FREE
+from service_mgr.lib.service.service_main import ServiceMgr
 from service_mgr.lib.service_group import ServiceGrpMgr
-from service_mgr.lib.grant_machine import GrantMachineMgr
 from service_mgr.lib.tp_service import TPServiceMgr
-from service_mgr.lib.filter_result import FilterServiceObjNotKeyResult, FilterServiceDicKeyGrpResult, \
+from service_mgr.lib.filter_result import FilterServiceDicKeyGrpResult, \
     FilterTPServiceNotKeyResult, FilterTPServiceKeyGrpResult
 import random
-from service_mgr.logic.rpc import TCP_SIGN
 from utils import logger
-import platform
 from utils.wapper.crypto import sign_checker
 from utils.service_control.setting import RT_CPU_USAGE_RDM, RT_HASH_RING
 
 
 class TcpHandler(TcpRpcHandler):
-
-    @gevent_adaptor()
-    @tcp_send_adaptor()
-    @tcp_recv_adaptor()
-    @sign_checker()
-    def start_service(self, service_type, ip):
-        """
-        启动服务
-        :param service_type:服务类型
-        :param ip:IP
-        :return:
-        """
-        if not ServiceGrpMgr().get_service_grp(service_type)\
-                or not GrantMachineMgr().get_machine(ip):
-            logger.error("TcpHandler::start_service Failed!!!, ERROR_PARAMS_ERROR, service_type:%s ip:%s"
-                         % (service_type, ip))
-            return {"result": error_code.ERROR_PARAMS_ERROR}
-
-        service_obj_ls = ServiceMgr().filter_services(FilterServiceObjNotKeyResult, service_type, ip, SS_FREE)
-
-        # windows 系统特殊处理，由于windows无法接收进程退出事件,一台windows只能启动一个进程
-        if not service_obj_ls and platform.system() != 'Linux':
-            service_obj_ls = [ServiceMgr().free_a_service(ip, service_type)]
-
-        if not service_obj_ls:
-            logger.error("TcpHandler::start_service Failed!!!, not free services, service_type:%s ip:%s"
-                         % (service_type, ip))
-            return {"result": error_code.ERROR_SERVICE_START_ERROR}
-
-        select_service_obj = random.choice(service_obj_ls)
-        if not select_service_obj.start():
-            logger.error("TcpHandler::start_service Failed!!!, ERROR_SERVICE_START_ERROR, service_type:%s ip:%s"
-                         % (service_type, ip))
-            return {"result": error_code.ERROR_SERVICE_START_ERROR}
-
-        return {"result": error_code.ERROR_SUCCESS,
-                "service_info": select_service_obj.get_info_dic(),
-                "sign": TCP_SIGN}
-
-    @gevent_adaptor()
-    @tcp_send_adaptor()
-    @tcp_recv_adaptor()
-    @sign_checker()
-    def stop_service(self, service_id):
-        """
-        停止服务
-        :param service_id:服务ID
-        :param sign: 请求服务器的签名
-        :return:
-        """
-        service_obj = ServiceMgr().get_service_by_id(service_id)
-        if not service_obj:
-            logger.error("TcpHandler::stop_service Failed!!!, ERROR_SERVICE_START_ERROR, service_id:%s"
-                         % (service_id))
-            return {"result": error_code.ERROR_PARAMS_ERROR}
-
-        if not service_obj.stop():
-            return {"result": error_code.ERROR_SERVICE_STOP_ERROR}
-
-        logger.error("TcpHandler::stop_service success!!!, service_id:%s" % service_id)
-        return {"result": error_code.ERROR_SUCCESS,
-                "sign": TCP_SIGN}
-
     @gevent_adaptor()
     @tcp_send_adaptor()
     @tcp_recv_adaptor()
@@ -179,7 +112,7 @@ class TcpHandler(TcpRpcHandler):
         :return: {"grp":[service,,,,,],,,,}
         """
         return ServiceMgr().filter_services(FilterServiceDicKeyGrpResult,
-                                            ServiceGrpMgr().get_visible(viewer),
+                                            ServiceGrpMgr().get_service_grps(),
                                             None,
                                             state)
 
@@ -194,4 +127,4 @@ class TcpHandler(TcpRpcHandler):
         :return: {"grp":[service,,,,,],,,,}
         """
         return TPServiceMgr().filter_tp_services(FilterTPServiceKeyGrpResult,
-                                                 ServiceGrpMgr().get_visible(viewer))
+                                                 ServiceGrpMgr().get_service_grps())

@@ -21,3 +21,8 @@ class GsRpcClient(TcpRpcClient):
     def clear_cache(self):
         params = {"sign": TCP_SIGN}
         return self.fetch_sync("clear_cache", ujson.dumps(params))
+
+    @except_adaptor()
+    def get_db_params(self):
+        params = {"sign": TCP_SIGN}
+        return self.fetch_sync("get_db_params", ujson.dumps(params))

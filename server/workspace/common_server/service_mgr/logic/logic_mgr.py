@@ -9,20 +9,13 @@ import time
 
 from utils.interfaces.common import IManager
 from utils.meta.singleton import Singleton
-from service_mgr.db.db_oper import DBGrantMachineInst, DBTpServiceInst,\
-    DBServiceInst, DBServiceGroupInst
-from service_mgr.lib.grant_machine import GrantMachineMgr
-from service_mgr.lib.service_group import ServiceGrpMgr
+from service_mgr.db.db_oper import DBTpServiceInst
 from service_mgr.lib.tp_service import TPServiceMgr
-from service_mgr.lib.service.service_main import ServiceMgr
 
 
 
 # 系统逻辑管理器列表
-G_LOGIC_MANAGER_LIST = [(GrantMachineMgr, DBGrantMachineInst),
-                        (ServiceGrpMgr, DBServiceGroupInst),
-                        (TPServiceMgr, DBTpServiceInst),
-                        (ServiceMgr, DBServiceInst),
+G_LOGIC_MANAGER_LIST = [(TPServiceMgr, DBTpServiceInst)
                         ]
 
 

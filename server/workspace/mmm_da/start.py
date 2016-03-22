@@ -76,12 +76,8 @@ class Service(MainService):
         arg_parser.add_argument('--pic_store_path', default="/tmp/FundTray/pay_screen_shot", type=str, help="支付截图存储路径")
         arg_parser.add_argument('--pic_download_path', default="http://52.77.234.86:20150/", type=str, help="支付截图下载路径")
 
-    def add_cmd_opts_after_sm(self, arg_parser):
-        """
-        在获取sm参数之后，提供添加arg_parser参数接口
-        :param arg_parser: 参数变量
-        :return:
-        """
+        arg_parser.add_argument('--db_name', type=str,  help="db name")
+
         from utils.service_control.cacher import ServiceMgrCacher
         mysql_dic = ServiceMgrCacher.find_tp_service(RT_MYSQL)
         arg_parser.add_argument('--db_host', default=mysql_dic['ip'], type=str, help="The host of the db")
