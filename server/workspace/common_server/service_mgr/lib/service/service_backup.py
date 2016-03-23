@@ -15,19 +15,17 @@ class ServiceBackup(object):
     def __init__(self, service_obj):
         self.__service_obj = service_obj
         self.db_params = None
-
-    def do(self):
         Jobs().add_cron_job(self.__backup, hour=MYSQL_DB_BACKUP_HOUR)
 
-    def __prepare(self):
+    def _prepare(self):
         if self.db_params:
             return
 
-        self.db_params = self.__service_obj.control_rpc.get_db_params()
+        self.db_params = self.__service_obj.service_ctl.control_rpc.get_db_params()
         assert self.db_params
 
     def __backup(self):
-        self.__prepare()
+        self._prepare()
 
         mysql_util.MysqlUtil.db_dump(self.db_params["db_host"],
                                      self.db_params["db_port"],

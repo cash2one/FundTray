@@ -7,23 +7,22 @@ Created on 2015-5-26
 """
 import copy
 import traceback
-import datetime
 import random
 import time
 from collections import defaultdict
 import ujson
 from utils.meta.singleton import Singleton
 from utils import logger
-from utils.scheduler import Jobs
 from utils.interfaces.common import IManager
 from utils.comm_func import timestamp_to_string
 from utils.service_control.setting import RT_HASH_RING, RT_CPU_USAGE_RDM, SS_RUNNING, SS_FREE, SERVICE_STATE
-from utils.service_control.checker import HEARTBEAT_EXPIRE_TIME
 from service_mgr.lib.filter_result import FilterServiceDicKeyGrpResult, FilterResult
 from service_cluster import ServiceCluster
-from service_mgr.logic.rpc.sender.cs_to_gs import GsRpcClient
 from utils.wapper.catch import except_adaptor
 from service_backup import ServiceBackup
+from service_hb import ServiceHeartBeat
+from service_ctl import ServiceCtl
+from service_verify import ServiceVerify
 
 
 class Service(object):
@@ -45,30 +44,22 @@ class Service(object):
 
         self.service_version = ""
         self.current_load = ""
-        self.heartbeat_time = ""
-        self._control_rpc = None
         self.state = SS_FREE
 
         self.id = self.make_id(service_group, ip, port)
         self.start_time = time.time()
 
-        Jobs().add_interval_job(HEARTBEAT_EXPIRE_TIME, self._heart_beat_expire)
+        self.service_hb = ServiceHeartBeat(self)
+        self.service_ctl = ServiceCtl(self)
+        self.service_verify = ServiceVerify(self)
 
         # 如果是xxx_da的服务，才需要做备份
         if "da" in self.service_group:
             self.service_backup = ServiceBackup(self)
-            self.service_backup.do()
 
     @staticmethod
     def make_id(service_group, ip, port):
         return "%s_%s_%s" % (service_group, ip, port)
-
-    def heart_beat(self, service_version, current_load, stat):
-        self.service_version = service_version
-        self.current_load = current_load
-        self.heartbeat_time = time.time()
-        self._set_state(SS_RUNNING) if stat else self.stop()
-        self.gen_view_info()
 
     def gen_view_info(self):
         is_https = 'https' in self.port
@@ -80,13 +71,6 @@ class Service(object):
         self.locate = {http_proctol: http_host, "xmpp": "%s" % self.jid} \
             if self.jid \
             else {http_proctol: http_host}
-
-    @property
-    def control_rpc(self):
-        tcp_port = self.port.get('tcp', None)
-        if tcp_port:
-            self._control_rpc = GsRpcClient(self.ip, tcp_port)
-        return self._control_rpc
 
     def __str__(self):
         return str(self.__dict__)
@@ -102,7 +86,7 @@ class Service(object):
                 "jid": self.jid,
                 "state": self.state,
                 "start_time": self.start_time,
-                "heartbeat_time": self.heartbeat_time,
+                "heartbeat_time": self.service_hb.hb_time,
                 "service_version": self.service_version,
                 "current_load": self.current_load,
                 "href_doc": self.href_doc,
@@ -110,7 +94,7 @@ class Service(object):
                 "locate": self.locate}
 
     def web_pick(self):
-        heartbeat_time = timestamp_to_string(self.heartbeat_time)
+        heartbeat_time = timestamp_to_string(self.service_hb.hb_time)
         start_time = timestamp_to_string(self.start_time)
         return {"id": self.id,
                 "ip": self.ip,
@@ -126,28 +110,19 @@ class Service(object):
                 "href": self.href if self.state == SS_RUNNING else ""}
 
     def _use(self):
-        self._set_state(SS_RUNNING)
+        self.set_state(SS_RUNNING)
 
     def _free(self):
         if self.state == SS_FREE:
             return
-        self._set_state(SS_FREE)
+        self.set_state(SS_FREE)
 
-    def _set_state(self, new_state):
+    def set_state(self, new_state):
         if new_state == self.state:
             return
 
         self.state = new_state
         ServiceMgr().on_service_state_change(self)
-
-    def _heart_beat_expire(self):
-        if self.state == SS_RUNNING:
-            if not self.heartbeat_time:
-                self.stop()
-                return
-            expire_time = self.heartbeat_time + HEARTBEAT_EXPIRE_TIME
-            if expire_time <= time.time():
-                self.stop()
 
     def is_free(self):
         return self.state == SS_FREE
@@ -157,7 +132,7 @@ class Service(object):
             return False
 
         self._use()
-        self.start_time = datetime.datetime.now()
+        self.start_time = time.time()
         return True
 
     def stop(self):

@@ -28,4 +28,4 @@ class HeartbeatApp(UdpServer):
             service_obj = Service(service_group, ip, port, jid)
             ServiceMgr().add_service(service_obj)
 
-        service_obj.heart_beat(service_version, current_load, stat)
+        service_obj.service_hb.heart_beat(service_version, current_load, stat)

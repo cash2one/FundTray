@@ -18,6 +18,7 @@ from utils.network import PING_RESPONSE
 from utils.wapper.tcp import tcp_recv_adaptor
 from utils.wapper.crypto import sm_sign_checker
 from utils.service_control.parser import ArgumentParser
+from utils.crypto.sign import Signer
 
 
 class TcpRpcHandler(RPCServer):
@@ -52,6 +53,20 @@ class TcpRpcHandler(RPCServer):
                 "db_user": args.db_user,
                 "db_password": args.db_password,
                 "db_table": args.db_table}
+
+    @gevent_adaptor()
+    @tcp_recv_adaptor()
+    @sm_sign_checker()
+    def verify(self, factor):
+        """
+        验证合法性
+        :param factor: 待处理因子
+        :return:
+        """
+        logger.info("RpcHandler::verify!!! factor:%s" % factor)
+
+        return Signer().gen_sign(factor)
+
 
 class TcpRpcServer(object):
     """
