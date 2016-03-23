@@ -75,7 +75,7 @@ class Service(MainService):
         arg_parser.add_argument('--pic_store_path', default="/tmp/FundTray/pay_screen_shot", type=str, help="支付截图存储路径")
         arg_parser.add_argument('--pic_download_path', default="http://52.77.234.86:20150/", type=str, help="支付截图下载路径")
 
-        arg_parser.add_argument('--db_name', type=str,  help="db name")
+        arg_parser.add_argument('--db_name', default=setting.SERVICE_TYPE, type=str,  help="db name")
 
         from utils.service_control.cacher import ServiceMgrCacher
         from utils.service_control.setting import TP_SERVICE_FLAG
