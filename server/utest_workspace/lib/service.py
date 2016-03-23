@@ -6,7 +6,7 @@ Created on 2015-6-4
 @author: Jay
 """
 from utils.service_control.cacher import ServiceMgrCacher
-from utils.service_control.setting import ST_MMM_DA
+from lib.setting import ST_MMM_DA
 from utils.service_control.setting import PT_HTTPS
 
 

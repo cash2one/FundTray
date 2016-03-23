@@ -12,7 +12,7 @@ import time
 from utils.service_control.caster import BEAT_INTERVAL
 from utils.service_control.checker import HEARTBEAT_EXPIRE_TIME
 from utils import logger
-from utils.service_control.setting import SERVICE_TYPE, ST_SERVICE_MGR
+from lib.setting import SERVICE_TYPE, ST_SERVICE_MGR
 
 cur_file_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 service_mgr_path = os.path.join(cur_file_path, "workspace", "common_server", "service_mgr", "start.py")

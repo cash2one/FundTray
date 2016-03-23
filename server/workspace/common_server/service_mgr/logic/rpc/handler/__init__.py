@@ -49,9 +49,8 @@ class TcpHandler(TcpRpcHandler):
             return {}
 
         return {"ip": select_service_obj.ip,
-                "port": select_service_obj.get_port(),
-                "jid": select_service_obj.params.get("JID", ""),
-                "jid_pwd": select_service_obj.params.get("JID_PWD", "")}
+                "port": select_service_obj.port,
+                "jid": select_service_obj.jid}
 
     @gevent_adaptor()
     @tcp_send_adaptor()
@@ -81,9 +80,8 @@ class TcpHandler(TcpRpcHandler):
         for idx, service_obj in enumerate(service_obj_ls):
             result_key = idx if rdm_type == RT_CPU_USAGE_RDM else rdm_param[idx]
             result[result_key] = {"ip": service_obj.ip,
-                                  "port": service_obj.get_port(),
-                                  "jid": service_obj.params.get("JID",""),
-                                  "jid_pwd": service_obj.params.get("JID_PWD", "")}
+                                  "port": service_obj.port,
+                                  "jid": service_obj.jid}
         return result
 
     @gevent_adaptor()

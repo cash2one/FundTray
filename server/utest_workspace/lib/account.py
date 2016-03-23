@@ -9,7 +9,6 @@ from lib.common import *
 from utils.interfaces.mmm_da.http_rpc import register, login, active, add_match_coin
 from utils.service_control.setting import PT_HTTPS, PT_HTTP
 from utils import error_code
-import random
 
 admin0d_id = 18888
 admin01_passwd = "!Admin01"

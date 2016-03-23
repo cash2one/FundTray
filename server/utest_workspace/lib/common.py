@@ -44,11 +44,10 @@ from utils.meta.singleton import Singleton
 from utils.crypto.sign import sign, checksign, Signer
 from utils.service_control import setting as service_control_setting
 from utils.service_control.cacher import ServiceMgrCacher, ParamCacher
-from utils.service_control.setting import ST_MMM, ST_MMM_DA
 from utils.setting import enum
 
 
 from lib.common_fun import random_str
-from lib.setting import SYNC_WAIT_TIME
+from lib.setting import SYNC_WAIT_TIME, ST_MMM_DA, ST_SERVICE_MGR, SERVICE_TYPE
 
 from common_fun import unittest_adaptor
