@@ -18,14 +18,14 @@ from utils.comm_func import timestamp_to_string
 from utils.service_control.setting import RT_HASH_RING, RT_CPU_USAGE_RDM, SS_RUNNING, SS_FREE, SERVICE_STATE
 from service_mgr.lib.filter_result import FilterServiceDicKeyGrpResult, FilterResult
 from service_cluster import ServiceCluster
-from utils.wapper.catch import except_adaptor
 from service_backup import ServiceBackup
 from service_hb import ServiceHeartBeat
 from service_ctl import ServiceCtl
 from service_verify import ServiceVerify
+from lib.service import ServiceComposeCtl
 
 
-class Service(object):
+class Service(ServiceComposeCtl):
     def __init__(self, service_group, ip, port, jid):
         """
         初始化服务信息
@@ -49,17 +49,21 @@ class Service(object):
         self.id = self.make_id(service_group, ip, port)
         self.start_time = time.time()
 
-        self.service_hb = ServiceHeartBeat(self)
-        self.service_ctl = ServiceCtl(self)
-        self.service_verify = ServiceVerify(self)
+        self.__heartbeat_time = None
 
-        # 如果是xxx_da的服务，才需要做备份
-        if "da" in self.service_group:
-            self.service_backup = ServiceBackup(self)
+        super(Service, self).__init__()
 
     @staticmethod
     def make_id(service_group, ip, port):
-        return "%s_%s_%s" % (service_group, ip, port)
+        return "%s_%s_%s" % (service_group, ip, "_".join(str(v) for v in port.values()))
+
+    @property
+    def heartbeat_time(self):
+        return self.__heartbeat_time
+
+    @heartbeat_time.setter
+    def heartbeat_time(self, new_hb_time):
+        self.__heartbeat_time = new_hb_time
 
     def gen_view_info(self):
         is_https = 'https' in self.port
@@ -86,7 +90,7 @@ class Service(object):
                 "jid": self.jid,
                 "state": self.state,
                 "start_time": self.start_time,
-                "heartbeat_time": self.service_hb.hb_time,
+                "heartbeat_time": self.__heartbeat_time,
                 "service_version": self.service_version,
                 "current_load": self.current_load,
                 "href_doc": self.href_doc,
@@ -94,7 +98,7 @@ class Service(object):
                 "locate": self.locate}
 
     def web_pick(self):
-        heartbeat_time = timestamp_to_string(self.service_hb.hb_time)
+        heartbeat_time = timestamp_to_string(self.__heartbeat_time)
         start_time = timestamp_to_string(self.start_time)
         return {"id": self.id,
                 "ip": self.ip,
@@ -122,7 +126,6 @@ class Service(object):
             return
 
         self.state = new_state
-        ServiceMgr().on_service_state_change(self)
 
     def is_free(self):
         return self.state == SS_FREE
@@ -133,6 +136,8 @@ class Service(object):
 
         self._use()
         self.start_time = time.time()
+        self.start_cp()
+        ServiceMgr().add_service(self)
         return True
 
     def stop(self):
@@ -140,6 +145,8 @@ class Service(object):
             return True
 
         self._free()
+        self.stop_cp()
+        ServiceMgr().del_service(self)
         return True
 
     def hash_key(self):
@@ -157,29 +164,82 @@ class ServiceMgr(IManager):
         self.__grp_srv_cluster = defaultdict(ServiceCluster)
         self.__init_data_ls = None
 
+    def new_service(self, service_group, ip, port, jid):
+        service_obj = Service(service_group, ip, port, jid)
+        service_obj.add_cp(ServiceHeartBeat(service_obj))
+        service_obj.add_cp(ServiceCtl(service_obj))
+        service_obj.add_cp(ServiceVerify(service_obj))
+
+        # 如果是xxx_da的服务，才需要做备份
+        if "da" in service_group:
+            service_obj.add_cp(ServiceBackup(service_obj))
+        service_obj.start()
+        return service_obj
+
     def add_service(self, service_obj):
         """
         添加一个服务对象
         :param service_obj:
         :return:
         """
-        # add id_to_service_dic
+        assert service_obj.state == SS_RUNNING
+        # id_to_service_dic
         self.__id_to_service_dic[service_obj.id] = service_obj
 
-        # add state_service_dic
+        # state_service_dic
         self.__state_service_dic.setdefault(service_obj.service_group, {})\
             .setdefault(service_obj.ip, {})\
-            .setdefault(service_obj.state, {})[service_obj.hash_key()] = service_obj
+            .setdefault(SS_RUNNING, {})[service_obj.hash_key()] = service_obj
 
-        # add running_hash_ring
-        if service_obj.state == SS_RUNNING:
-            self.__grp_srv_cluster[service_obj.service_group].add_service(service_obj, is_init=True)
+        # running_hash_ring
+        self.__grp_srv_cluster[service_obj.service_group].add_service(service_obj, is_init=True)
+
+    def del_service(self, service_obj):
+        """
+        删除一个服务对象
+        :param service_obj:
+        :return:
+        """
+        assert service_obj.state == SS_FREE
+        # id_to_service_dic
+        self.__id_to_service_dic.pop(service_obj.id, None)
+
+        # state_service_dic
+        self.__state_service_dic.get(service_obj.service_group, {})\
+            .get(service_obj.ip, {})\
+            .get(SS_RUNNING, {})\
+            .pop(service_obj.hash_key(), None)
+
+        # running_hash_ring
+        self.__grp_srv_cluster[service_obj.service_group].del_service(service_obj)
 
     def update(self, curtime):
         [service_obj.update(curtime) for service_obj in self.__id_to_service_dic.values()]
 
     def get_init_data_ls(self):
         return self.__init_data_ls
+
+    def json_pick(self, data_ls):
+        """
+        json 序列化
+        :param data_ls:
+        :return:
+        """
+        pick_ls = copy.deepcopy(data_ls)
+        for dic in pick_ls:
+            dic["port"] = ujson.dumps(dic['port']) if dic['port'] else ""
+        return pick_ls
+
+    def json_unpick(self, data_ls):
+        """
+        json 反序列化
+        :param data_ls:
+        :return:
+        """
+        un_pick_ls = copy.deepcopy(data_ls)
+        for dic in un_pick_ls:
+            dic["port"] = ujson.loads(dic['port']) if dic['port'] else {}
+        return un_pick_ls
 
     def web_pick(self, service_grp=None):
         """
@@ -222,22 +282,6 @@ class ServiceMgr(IManager):
 
             v_unpick_data_ls.append(data_dic)
         return v_unpick_data_ls
-
-    @except_adaptor(is_raise=False)
-    def on_service_state_change(self, service_obj):
-        if service_obj.state == SS_RUNNING:
-            self.__grp_srv_cluster[service_obj.service_group].add_service(service_obj)
-        else:
-            self.__grp_srv_cluster[service_obj.service_group].del_service(service_obj)
-
-        self.__state_service_dic.get(service_obj.service_group, {})\
-            .get(service_obj.ip, {})\
-            .get(not service_obj.state, {})\
-            .pop(service_obj.hash_key(), None)
-
-        self.__state_service_dic.setdefault(service_obj.service_group, {})\
-            .setdefault(service_obj.ip, {})\
-            .setdefault(service_obj.state, {})[service_obj.hash_key()] = service_obj
 
     def get_service_by_id(self, service_id):
         return self.__id_to_service_dic.get(service_id, None)

@@ -6,13 +6,19 @@ Created on 2016-3-23
 @author: Jay
 """
 from service_mgr.logic.rpc.sender.cs_to_gs import GsRpcClient
+from lib.service import IServiceCompose
 
 
-class ServiceCtl(object):
+class ServiceCtl(IServiceCompose):
     def __init__(self, service_obj):
         self.__service_obj = service_obj
         self._control_rpc = None
 
+    @staticmethod
+    def name():
+        return "sctl"
+
+    def start(self):
         self._prepare()
 
     def _prepare(self):

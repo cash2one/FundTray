@@ -41,6 +41,6 @@ class GsRpcClient(TcpRpcClient):
         """
         factor = random.randint(1, 10000)
         params = {"sign": TCP_SIGN, "factor": factor}
-        factor_sign = self.fetch_sync("factor", ujson.dumps(params))
+        factor_sign = self.fetch_sync("verify", ujson.dumps(params))
         return Signer().check_sign(factor_sign, factor)
 

@@ -47,12 +47,12 @@ class TcpRpcHandler(RPCServer):
         :return:
         """
         logger.info("RpcHandler::get_db_params!!!")
-        args = ArgumentParser().get_argparser()
+        args = ArgumentParser().args
         return {"db_host": args.db_host,
                 "db_port": args.db_port,
                 "db_user": args.db_user,
                 "db_password": args.db_password,
-                "db_table": args.db_table}
+                "db_name": args.db_name}
 
     @gevent_adaptor()
     @tcp_recv_adaptor()

@@ -10,6 +10,7 @@ from utils.wapper.stackless import gevent_adaptor
 import ujson
 from service_mgr.lib.service.service_main import ServiceMgr, Service
 from service_mgr.lib.service_group import ServiceGrpMgr
+from service_mgr.lib.service.service_hb import ServiceHeartBeat
 
 
 class HeartbeatApp(UdpServer):
@@ -25,7 +26,6 @@ class HeartbeatApp(UdpServer):
         service_id = Service.make_id(service_group, ip, port)
         service_obj = ServiceMgr().get_service_by_id(service_id)
         if not service_obj:
-            service_obj = Service(service_group, ip, port, jid)
-            ServiceMgr().add_service(service_obj)
+            service_obj = ServiceMgr().new_service(service_group, ip, port, jid)
 
-        service_obj.service_hb.heart_beat(service_version, current_load, stat)
+        service_obj.find_cp(ServiceHeartBeat.name()).heart_beat(service_version, current_load, stat)

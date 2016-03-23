@@ -30,7 +30,7 @@ class ServiceCluster(object):
 
         if not is_init:
             self._do_effect_nodes(cur_node)
-        logger.warn("ServiceCluster::add_service success, service_obj:%s" % service_obj)
+        logger.warn("ServiceCluster::add_service success, service_obj:%s cur_node:%s" % (service_obj, cur_node))
 
     def del_service(self, service_obj):
         """
@@ -38,11 +38,11 @@ class ServiceCluster(object):
         """
         cur_node = service_obj.hash_key()
         if not self.__hash_ring.has_node(cur_node):
-            logger.warn("ServiceCluster::del_service, node not exist!!!, service_obj:%s " % service_obj)
+            logger.warn("ServiceCluster::del_service, node not exist!!!, service_obj:%s cur_node:%s" % (service_obj, cur_node))
             return
 
         self.__hash_ring.remove_node(service_obj.hash_key())
-        logger.warn("ServiceCluster::del_service success, service_obj:%s" % service_obj)
+        logger.warn("ServiceCluster::del_service success, service_obj:%s cur_node:%s" % (service_obj, cur_node))
 
     def get_service_objs(self, string_key_ls):
         """

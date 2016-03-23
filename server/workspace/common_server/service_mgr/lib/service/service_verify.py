@@ -7,16 +7,28 @@ Created on 2016-3-23
 """
 from utils import logger
 from utils.scheduler import Jobs
+from lib.service import IServiceCompose
+from service_ctl import ServiceCtl
 
 SERVICE_VERIFY_INTERVAL_SECONDS = 60
-class ServiceVerify(object):
+class ServiceVerify(IServiceCompose):
     def __init__(self, service_obj):
         self.__service_obj = service_obj
-        Jobs().add_interval_job(SERVICE_VERIFY_INTERVAL_SECONDS, self.__verify)
+        self.job = None
+
+    @staticmethod
+    def name():
+        return "svry"
+
+    def start(self):
+        self.job = Jobs().add_interval_job(SERVICE_VERIFY_INTERVAL_SECONDS, self.__verify)
+
+    def stop(self):
+        Jobs().remove_job(self.job)
 
     def _is_valid(self):
         try:
-            is_valid = self.__service_obj.service_ctl.control_rpc.verify()
+            is_valid = self.__service_obj.find_cp(ServiceCtl.name()).control_rpc.verify()
         except:
             is_valid = False
         return is_valid
@@ -25,7 +37,10 @@ class ServiceVerify(object):
         is_valid = self._is_valid()
         if not is_valid:
             self._invalid()
+            return
+
+        logger.info("ServiceVerify::__verify success!!! service:%s" % self.__service_obj.id)
 
     def _invalid(self):
-        logger.warn("ServiceHeartBeat::_invalid!!! service:%s will stop" % self.__service_obj.id)
+        logger.warn("ServiceVerify::_invalid!!! service:%s will stop" % self.__service_obj.id)
         self.__service_obj.stop()
