@@ -5,7 +5,5 @@ Created on 2015-4-25
 
 @author: Jay
 """
-from utils.service_control.setting import ST_MMM_DA
-
-SERVICE_TYPE = ST_MMM_DA
+SERVICE_TYPE = "mmm_da"
 VERSION = "0.0.1"

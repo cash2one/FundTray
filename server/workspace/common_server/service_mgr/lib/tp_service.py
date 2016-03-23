@@ -14,9 +14,10 @@ from utils.interfaces.common import IManager
 import copy
 from service_mgr.lib.filter_result import FilterResult
 from utils.service_control.checker import PortChecker, TcpCommonChecker, MysqlChecker
-from utils.service_control.setting import SS_FREE, SS_RUNNING, PT_TCP, RT_MYSQL
+from utils.service_control.setting import SS_FREE, SS_RUNNING, PT_TCP, TP_SERVICE_FLAG
 
 TPSERVICE_CHECK_INTERVAL = 120
+TP_MYSQL = TP_SERVICE_FLAG+"mysql"
 
 class TPService(PortChecker):
     def __init__(self, id, ip, service_group, port, params):
@@ -40,7 +41,7 @@ class TPService(PortChecker):
 
     def _get_checker(self, protocol):
         if protocol.lower() == PT_TCP.lower():
-            if self.service_group.lower() == RT_MYSQL.lower():
+            if self.service_group.lower() == TP_MYSQL.lower():
                 return MysqlChecker(self.ip,
                                     self.port[protocol],
                                     "information_schema",

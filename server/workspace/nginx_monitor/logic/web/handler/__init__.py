@@ -8,9 +8,10 @@ Created on 2015-4-28
 from utils.route import route
 from utils.network.http import HttpRpcHandler
 from utils.wapper.web import web_adaptor
-from utils.service_control.setting import PT_HTTPS, PT_HTTP, ST_MMM_DA
+from utils.service_control.setting import PT_HTTPS, PT_HTTP
 from utils.service_control.cacher import ServiceMgrCacher
 from utils.interfaces.mmm_da.http_rpc import apply_help_paid
+from mmm_da.setting import SERVICE_TYPE as ST_MMM_DA
 
 
 MMMDAHttpRpcClt = ServiceMgrCacher().get_connection(ST_MMM_DA, protocol=PT_HTTPS)

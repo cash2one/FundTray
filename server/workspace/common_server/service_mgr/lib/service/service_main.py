@@ -89,8 +89,8 @@ class Service(ServiceComposeCtl):
                 "port": self.port,
                 "jid": self.jid,
                 "state": self.state,
-                "start_time": self.start_time,
-                "heartbeat_time": self.__heartbeat_time,
+                "start_time": timestamp_to_string(self.start_time),
+                "heartbeat_time": timestamp_to_string(self.__heartbeat_time),
                 "service_version": self.service_version,
                 "current_load": self.current_load,
                 "href_doc": self.href_doc,
@@ -98,16 +98,14 @@ class Service(ServiceComposeCtl):
                 "locate": self.locate}
 
     def web_pick(self):
-        heartbeat_time = timestamp_to_string(self.__heartbeat_time)
-        start_time = timestamp_to_string(self.start_time)
         return {"id": self.id,
                 "ip": self.ip,
                 "service_group": self.service_group,
                 "port": self.port,
                 "jid": self.jid,
                 "state": self.state,
-                "start_time": start_time,
-                "heartbeat_time": heartbeat_time,
+                "start_time": timestamp_to_string(self.start_time),
+                "heartbeat_time": timestamp_to_string(self.__heartbeat_time),
                 "service_version": self.service_version,
                 "current_load": self.current_load,
                 "href_doc": self.href_doc if self.state == SS_RUNNING else "",
@@ -247,7 +245,7 @@ class ServiceMgr(IManager):
         :return:
         """
         grp_services = self.filter_services(FilterServiceDicKeyGrpResult, service_grp, None, None)
-        [grp_services.update({grp: self.db_pick(services)}) for grp, services in grp_services.items()]
+        [grp_services.update({grp: self.json_pick(services)}) for grp, services in grp_services.items()]
         grp_counts = dict((grp, len(services)) for grp, services in grp_services.items())
         return grp_services, grp_counts
 

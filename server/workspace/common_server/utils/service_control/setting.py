@@ -9,24 +9,11 @@ SM_HTTP_PORT = 16666
 SM_TCP_PORT = 18888
 SM_UDP_PORT = 16688
 
-# 服务类型
-SERVICE_TYPE = [
-    ST_SERVICE_MGR,
-    ST_MMM_DA,
-    ST_MMM,
-] = [
-    "service_mgr",
-    "mmm_da",
-    "mmm",
-]
-
-TP_SERVICE_TYPE = [
-    RT_MYSQL,
-] = [
-    "tp_mysql",
-]
+# 第三方服务标识头
+TP_SERVICE_FLAG = "tp_"
 
 
+# 网络协议类型
 PROTOCOL_TYPE = [
     PT_TCP,
     PT_UDP,

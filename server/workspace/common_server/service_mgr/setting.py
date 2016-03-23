@@ -4,9 +4,7 @@ Created on 2015-4-22
 
 @author: Jay
 """
-from utils.service_control.setting import ST_SERVICE_MGR
-
-SERVICE_TYPE = ST_SERVICE_MGR
+SERVICE_TYPE = "service_mgr"
 VERSION = "0.0.1"
 
 # 内网默认配置

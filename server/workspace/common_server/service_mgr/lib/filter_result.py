@@ -52,7 +52,8 @@ class FilterServiceDicKeyGrpResult(FilterResult):
 
     def form(self, service_grp_id, ip, state, id_service_dic):
         service_dic_ls = [service_obj.get_info_dic() for service_obj in id_service_dic.values()]
-        self.service_data.setdefault(service_grp_id, []).extend(service_dic_ls)
+        if service_dic_ls:
+            self.service_data.setdefault(service_grp_id, []).extend(service_dic_ls)
 
     def _sort(self):
         [service_ls.sort(key=lambda x: x['id']) for service_ls in self.service_data.values()]

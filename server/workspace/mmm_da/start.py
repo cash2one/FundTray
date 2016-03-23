@@ -14,7 +14,6 @@ monkey.patch_all()
 
 from mmm_da import setting
 from utils.service_control.controller import MainService
-from utils.service_control.setting import RT_MYSQL
 import time
 from utils.service_control.parser import parser_boolean
 
@@ -79,7 +78,8 @@ class Service(MainService):
         arg_parser.add_argument('--db_name', type=str,  help="db name")
 
         from utils.service_control.cacher import ServiceMgrCacher
-        mysql_dic = ServiceMgrCacher.find_tp_service(RT_MYSQL)
+        from utils.service_control.setting import TP_SERVICE_FLAG
+        mysql_dic = ServiceMgrCacher.find_tp_service(TP_SERVICE_FLAG+"mysql")
         arg_parser.add_argument('--db_host', default=mysql_dic['ip'], type=str, help="The host of the db")
         arg_parser.add_argument('--db_port', default=mysql_dic['port']['tcp'], type=int, help="The port of the db")
         arg_parser.add_argument('--db_user', default=mysql_dic['params']['db_user'], type=str, help="The username of the db")
