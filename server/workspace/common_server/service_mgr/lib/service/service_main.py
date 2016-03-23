@@ -55,7 +55,9 @@ class Service(ServiceComposeCtl):
 
     @staticmethod
     def make_id(service_group, ip, port):
-        return "%s_%s_%s" % (service_group, ip, "_".join(str(v) for v in port.values()))
+        id = "%s%s%s" % (service_group, ip, "".join(str(v) for v in port.values()))
+        id = id.replace("_", "").replace(".", "")
+        return id
 
     @property
     def heartbeat_time(self):
