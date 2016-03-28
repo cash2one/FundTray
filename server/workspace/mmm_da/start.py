@@ -75,15 +75,11 @@ class Service(MainService):
         arg_parser.add_argument('--pic_store_path', default="/tmp/FundTray/pay_screen_shot", type=str, help="支付截图存储路径")
         arg_parser.add_argument('--pic_download_path', default="http://52.77.234.86:20150/", type=str, help="支付截图下载路径")
 
+        arg_parser.add_argument('--db_host', type=str, help="The host of the db")
+        arg_parser.add_argument('--db_port', default=3306, type=int, help="The port of the db")
+        arg_parser.add_argument('--db_user', type=str, help="The username of the db")
+        arg_parser.add_argument('--db_password', type=str, help="The password for the db user")
         arg_parser.add_argument('--db_name', default=setting.SERVICE_TYPE, type=str,  help="db name")
-
-        from utils.service_control.cacher import ServiceMgrCacher
-        from utils.service_control.setting import TP_SERVICE_FLAG
-        mysql_dic = ServiceMgrCacher.find_tp_service(TP_SERVICE_FLAG+"mysql")
-        arg_parser.add_argument('--db_host', default=mysql_dic['ip'], type=str, help="The host of the db")
-        arg_parser.add_argument('--db_port', default=mysql_dic['port']['tcp'], type=int, help="The port of the db")
-        arg_parser.add_argument('--db_user', default=mysql_dic['params']['db_user'], type=str, help="The username of the db")
-        arg_parser.add_argument('--db_password', default=mysql_dic['params']['db_password'], type=str, help="The password for the db user")
 
 
 if __name__ == "__main__":
